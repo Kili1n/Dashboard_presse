@@ -7,7 +7,7 @@ const ACCRED_LIST = {
     "US CHANTILLY": "https://www.instagram.com/uschantilly/",
     "US ORLEANS": "https://orleansloiretfoot.com/contact/",
     "NANTERRE": "https://www.nanterre92.com/club/acces/accreditations-journalistes/",
-    "C'CHARTRES BASKET": "communication@ccmbf.fr",
+    "CHARTRES": "communication@ccmbf.fr",
     "PARIS 92": "julia@paris92.fr",
     "C'CHARTRES MHB": "manon.bougard@ccmhb.fr",
     "US CRETEIL": "https://uschb.fr/infos-pratiques/presse/",
