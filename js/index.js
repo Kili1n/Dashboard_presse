@@ -120,7 +120,15 @@ const getTeamCoords = (name) => {
 };
 
 async function fetchTravelData(uLat, uLon, dLat, dLon) {
-    const cacheKey = `${uLat},${uLon},${dLat},${dLon}`;
+    const cacheKey = `travel_${uLat}_${uLon}_${dLat}_${dLon}`;
+    const stored = localStorage.getItem(cacheKey);
+    if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Date.now() - parsed.timestamp < 86400000) {
+            return parsed.data;
+        }
+    }
+
     if (travelCache.has(cacheKey)) return travelCache.get(cacheKey);
 
     try {
@@ -182,6 +190,94 @@ function showSuccess(link, originalText) {
     }, 2000);
 }
 
+async function fetchTravelData(uLat, uLon, dLat, dLon) {
+    const cacheKey = `travel_${uLat}_${uLon}_${dLat}_${dLon}`;
+
+    // 1. Vérification du localStorage (Persistance longue durée)
+    const stored = localStorage.getItem(cacheKey);
+    if (stored) {
+        try {
+            const parsed = JSON.parse(stored);
+            // On vérifie si le cache a moins de 24h (86400000 ms)
+            if (Date.now() - parsed.timestamp < 86400000) {
+                // On remet en mémoire vive pour les prochains accès rapides
+                travelCache.set(cacheKey, parsed.data);
+                return parsed.data;
+            }
+        } catch (e) {
+            console.warn("Erreur lecture localStorage", e);
+        }
+    }
+    
+    // 2. Vérification du travelCache (Mémoire vive - Map)
+    if (travelCache.has(cacheKey)) return travelCache.get(cacheKey);
+
+    // 3. Appel API Geoapify si aucune donnée en cache
+    try {
+        const url = `https://api.geoapify.com/v1/routing?waypoints=${uLat},${uLon}|${dLat},${dLon}&mode=drive&apiKey=${GEOAPIFY_KEY}`;
+        const res = await fetch(url);
+        
+        if (!res.ok) throw new Error(`Erreur API: ${res.status}`);
+        
+        const data = await res.json();
+        
+        if (data.features?.length > 0) {
+            const props = data.features[0].properties;
+            const result = { 
+                dist: Math.round(props.distance / 1000), 
+                car: Math.round(props.time / 60) 
+            };
+
+            // 4. Sauvegarde dans les deux caches
+            travelCache.set(cacheKey, result); // Mémoire vive
+            localStorage.setItem(cacheKey, JSON.stringify({
+                timestamp: Date.now(),
+                data: result
+            })); // Stockage local
+
+            return result;
+        }
+    } catch (e) { 
+        console.warn("Erreur lors de la récupération du trajet :", e); 
+    }
+    return null;
+}
+
+async function fetchWeather(lat, lon, date) {
+    if (!lat || !lon || !date || isNaN(date.getTime())) return null;
+
+    const now = new Date();
+    const diffInDays = (date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24);
+
+    // 1. Sécurité : Open-Meteo limite à 16 jours. On bloque à 14 pour éviter l'erreur 400.
+    if (diffInDays > 14 || diffInDays < -1) return null; 
+
+    // 2. Cache localStorage : Clé unique par lieu et par date
+    const dateStr = date.toISOString().split('T')[0];
+    const cacheKey = `weather_${lat}_${lon}_${dateStr}`;
+    const stored = localStorage.getItem(cacheKey);
+    
+    if (stored) return stored;
+
+    try {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weather_code&start_date=${dateStr}&end_date=${dateStr}&timezone=auto`;
+        const res = await fetch(url);
+        
+        if (!res.ok) return null; // Si l'API renvoie 400 ou 500, on ignore proprement
+
+        const data = await res.json();
+        if (data.daily && data.daily.weather_code) {
+            const icon = WEATHER_ICONS[data.daily.weather_code[0]] || "🌡️";
+            // On mémorise l'émoji (valable pour toujours car la date est fixée)
+            localStorage.setItem(cacheKey, icon);
+            return icon;
+        }
+    } catch (e) {
+        console.error("Erreur météo:", e);
+    }
+    return null;
+}
+
 async function updateDistances() {
     if (isCalculating || !userPosition) {
         if(!userPosition) alert("Veuillez d'abord activer votre position GPS.");
@@ -203,6 +299,10 @@ async function updateDistances() {
 
             const travel = await fetchTravelData(userPosition.lat, userPosition.lon, m.locationCoords.lat, m.locationCoords.lon);
             
+            if (m.sport.toLowerCase() === "football") {
+                m.weather = await fetchWeather(m.locationCoords.lat, m.locationCoords.lon, m.dateObj);
+            }
+
             if (travel) {
                 allMatches.forEach(match => {
                     if (match.home.name === m.home.name) {
@@ -256,11 +356,48 @@ async function loadMatches() {
 }
 
 function requestUserLocation() {
-    if(navigator.geolocation) {
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
-            userPosition = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+            const newPos = { 
+                lat: pos.coords.latitude, 
+                lon: pos.coords.longitude 
+            };
+
+            // 1. Vérification du changement de position
+            if (userPosition) {
+                // Calcul de la différence de latitude et longitude
+                const latDiff = Math.abs(userPosition.lat - newPos.lat);
+                const lonDiff = Math.abs(userPosition.lon - newPos.lon);
+
+                // Si le déplacement est > ~5.5km, on invalide le cache
+                if (latDiff > 0.05 || lonDiff > 0.05) {
+                    console.log("📍 Position modifiée : nettoyage du cache de distance.");
+                    
+                    // Vide le Map en mémoire vive
+                    travelCache.clear();
+                    
+                    // Vide les entrées de trajet dans le localStorage
+                    Object.keys(localStorage).forEach(key => {
+                        if (key.startsWith('travel_')) {
+                            localStorage.removeItem(key);
+                        }
+                    });
+                }
+            }
+
+            // 2. Mise à jour de la position globale
+            userPosition = newPos;
+            
+            // 3. Mise à jour de l'interface
             document.getElementById('gpsBtn').classList.add('active');
+            console.log("Position mise à jour :", userPosition);
+            
+        }, (error) => {
+            console.warn("Erreur de géolocalisation :", error.message);
+            alert("Veuillez autoriser la géolocalisation pour calculer les distances.");
         });
+    } else {
+        alert("La géolocalisation n'est pas supportée par votre navigateur.");
     }
 }
 
@@ -399,7 +536,7 @@ function renderMatches(data) {
         // Affichage propre de la distance (pas de 0km)
         const distText = m.isCalculating ? '<i class="fa-solid fa-spinner fa-spin"></i>' : (m.distance > 0 ? `${m.distance} km` : '-- km');
 
-       let mapsUrl = "#";
+        let mapsUrl = "#";
         if (m.locationCoords) {
             if (userPosition) {
                 // Itinéraire de l'utilisateur vers le stade
@@ -433,11 +570,12 @@ function renderMatches(data) {
                 <div class="transport-info">
                     <div class="distance">${distText}</div>
                     <div class="modes">
+                        ${m.weather ? `<div class="mode weather-badge" title="Météo prévue">${m.weather}</div>` : ''}
                         <div class="mode"><i class="fa-solid fa-car"></i> ${m.times.car || '--'}'</div>
                         <div class="mode"><i class="fa-solid fa-train-subway"></i> ${m.times.public || '--'}'</div>
                     </div>
                 </div>
-                <a href="${mapsUrl}" target="_blank" class="maps-arrow ${!m.locationCoords ? 'disabled' : ''}" title="Voir l'itinéraire">
+                <a href="${mapsUrl}" target="_blank" class="maps-arrow ${!m.locationCoords ? 'disabled' : ''}" title="Voir l'itinéraire sur Google Maps">
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </div>

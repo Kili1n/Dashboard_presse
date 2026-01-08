@@ -224,3 +224,29 @@ input:checked + .slider:before { transform: translateX(14px); }
 
 /* Menu Toggle Mobile (Caché sur desktop) */
 .menu-toggle { display: none; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-primary); }
+
+.weather-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+}
+
+.weather-badge {
+    font-size: 14px;
+    background: #FFFFFF;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-out;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

@@ -161,3 +161,13 @@ const STADIUM_COORDS = {
     "PONTAULT-COMBAULT": { lat: 48.796, lon: 2.611 }, 
     "MASSY ESSONNE": { lat: 48.730, lon: 2.275 } 
 };
+
+const WEATHER_ICONS = {
+    0: "☀️", // Ciel dégagé
+    1: "🌤️", 2: "⛅", 3: "☁️", // Nuageux
+    45: "🌫️", 48: "🌫️", // Brouillard
+    51: "🌦️", 53: "🌦️", 55: "🌦️", // Bruine
+    61: "🌧️", 63: "🌧️", 65: "🌧️", // Pluie
+    71: "❄️", 73: "❄️", 75: "❄️", // Neige
+    95: "⛈️", // Orage
+};
