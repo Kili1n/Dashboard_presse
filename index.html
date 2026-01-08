@@ -724,7 +724,8 @@ Kilian LENTZ`);
                 document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 20);
             });
 
-            document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('menuToggle').addEventListener('click', (e) => {
+                e.stopPropagation(); 
                 document.getElementById('mainHeader').classList.toggle('menu-open');
             });
         });
