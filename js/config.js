@@ -35,7 +35,7 @@ const CUSTOM_LOGOS = {
     "F.C.BALAGNE" : "https://upload.wikimedia.org/wikipedia/fr/thumb/c/c1/Logo_FC_Balagne_-_2022.svg/1402px-Logo_FC_Balagne_-_2022.svg.png",
     "METZ FC" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQDKhDfpfHfD_wFiddBwtl0a8fnDprxnJ8Q&s",
     "PARIS SAINT-GERMAIN" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcT7rPHMxsie6O_wgqoO1KekpR9tvIP72moA&s",
-    "LOSC LILLE 21" : "https://upload.wikimedia.org/wikipedia/fr/thumb/6/62/Logo_LOSC_Lille_2018.svg/1200px-Logo_LOSC_Lille_2018.svg.png",
+    "LOSC" : "https://upload.wikimedia.org/wikipedia/fr/thumb/6/62/Logo_LOSC_Lille_2018.svg/1200px-Logo_LOSC_Lille_2018.svg.png",
     "PARIS FC" : "https://upload.wikimedia.org/wikipedia/fr/archive/d/db/20190512200040%21Logo_Paris_FC_2011.svg",
     "OLYMPIQUE LYONNAIS" : "https://upload.wikimedia.org/wikipedia/fr/a/a5/Logo_Olympique_Lyonnais_-_2022.svg",
     "MANTOIS" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSElOjGquoPUf3VgmaDxRlFwoyQknGeNH5_pA&s",
@@ -108,7 +108,21 @@ const CUSTOM_LOGOS = {
     "ANGERS": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhP-ZhT1JmqvjV63lqoJrIZF4p4Yf9ZOSdfQ&s",
     "PAU BILLERE": "https://upload.wikimedia.org/wikipedia/fr/9/98/Logo_du_Pau_Bill%C3%A8re_Handball_2024.png",
     "VALENCE" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJkjuY-OlZH7sim_s4iZ1X03jkmzvGgvoqw&s",
-    "SARREBOURG MOSELLE SUD" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8SZ3f_XLde2J_RXSDtsN-ZX_TILvFA6X39Q&s"
+    "SARREBOURG MOSELLE SUD" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8SZ3f_XLde2J_RXSDtsN-ZX_TILvFA6X39Q&s",
+    "MHSC" : "https://upload.wikimedia.org/wikipedia/commons/6/6a/Logo_-_Montpellier_H%C3%A9rault_Sport_Club_%28MHSC%29.png",
+    "LE MANS" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOmfWRpjrxJ7E_j_fecMApgPPA62WGLfCvlw&s",
+    "HAVRE" : "https://upload.wikimedia.org/wikipedia/fr/thumb/e/e6/Logo_Havre_AC_2012.svg/999px-Logo_Havre_AC_2012.svg.png",
+    "MONTROUGE" : "https://d1e67q5w736kt2.cloudfront.net/france/clubs/montrouge-fc-92.jpg",
+    "MAINVILLIERS" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHkbHqJut_c0jJaQAACeOLrKJtXwMGAQOJA&s",
+    "LAVAL" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGwABs25QOyP-41GL3QGrUEjDWxHal8DoB0A&s",
+    "BRETIGNY" : "https://www.csbretignyfootball.fr/wp-content/uploads/2023/02/cropped-cropped-LOGO-CSB-1.png",
+    "BOULAZAC" : "https://upload.wikimedia.org/wikipedia/fr/thumb/a/a8/Logo_Boulazac_Basket_Dordogne_-_2019.svg/1132px-Logo_Boulazac_Basket_Dordogne_-_2019.svg.png",
+    "VILLENEUVE D'ASCQ": "https://upload.wikimedia.org/wikipedia/fr/e/eb/Logo_ESBVA_%282024%29.png",
+    "SAINT DENIS" : "https://media.scorenco.com/media/image/club-logo-1721332739.570997.jpg",
+    "AUBERVILLIERS" : "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b9/Logo_FCM_Aubervilliers_-_2024.svg/1200px-Logo_FCM_Aubervilliers_-_2024.svg.png",
+    "ORVAULT":"https://www.orvault.fr/wp-content/uploads/2025/05/Logo-Com-Saison-2024-2025.png",
+    "MONTBRISSON" : "https://s2.static-footeo.com/uploads/as-savigneux-montbrison/logo__t1wiaz.png",
+    "STRASBOURG" : "https://upload.wikimedia.org/wikipedia/fr/b/b0/Logo_SIG_Strasbourg_-_2015.svg"
 };
 
 const STADIUM_COORDS = {
