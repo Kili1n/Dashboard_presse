@@ -199,6 +199,7 @@ async function scrapeFootball(page) {
                 if (isHome && isWithinRange && !futureMatchesMap.has(m.id)) {
                     futureMatchesMap.set(m.id, {
                         sport: "football",
+                        sourceUrl: url,
                         isoDate: matchDate.toISOString(),
                         date: matchDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
                         home: m.home,
@@ -262,6 +263,7 @@ async function scrapeBasketball(page) {
                 if (matchDate && matchDate >= now && matchDate <= limitDate) {
                     return {
                         sport: "basketball",
+                        sourceUrl: url,
                         isoDate: matchDate.toISOString(),
                         date: matchDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
                         home: m.home,
@@ -337,6 +339,7 @@ async function scrapeHandball(page) {
                 if (isHome && isWithinRange) {
                     return {
                         sport: "handball",
+                        sourceUrl: url,
                         isoDate: matchDate.toISOString(),
                         date: matchDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
                         home: m.home,

@@ -272,3 +272,20 @@
     }
 }
 }
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-brand, .footer-links a {
+        justify-content: center; /* Centre les éléments */
+    }
+
+    .footer-desc {
+        margin: 0 auto; /* Centre le texte de description */
+    }
+}

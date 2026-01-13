@@ -1,106 +1,7 @@
 [
     {
-        "sport": "basketball",
-        "isoDate": "2026-01-09T19:00:00.000Z",
-        "date": "vendredi 9 janvier 2026",
-        "home": "ALM EVREUX BASKET",
-        "away": "POITIERS BASKET 86",
-        "competition": "ÉLIT2",
-        "round": "J18",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
-        "isoDate": "2026-01-10T13:30:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "NEUILLY MARNE SFC",
-        "away": "CROIX FIC",
-        "competition": "N3 - Senior",
-        "round": "Journée 12",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
-        "isoDate": "2026-01-10T13:30:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "AMIENS SCF 2",
-        "away": "METZ FC 2",
-        "competition": "N3 - Senior",
-        "round": "Journée 12",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
-        "isoDate": "2026-01-10T13:30:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "VIMY US",
-        "away": "PAYS DE CASSEL US",
-        "competition": "N3 - Senior",
-        "round": "Journée 12",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
-        "isoDate": "2026-01-10T13:30:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "AAS SARCELLES",
-        "away": "MHSC FEMININES",
-        "competition": "COUPE DE FRANCE FÉMININE - Senior F",
-        "round": "16èmes de finale",
-        "location": "N/A"
-    },
-    {
-        "sport": "basketball",
-        "isoDate": "2026-01-10T13:30:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "SASP - SAINT QUENTIN BASKET BALL",
-        "away": "SASP ESSM LE PORTEL BASKET BALL COTE D'OPALE",
-        "competition": "ESPOIRS",
-        "round": "J13",
-        "location": "N/A"
-    },
-    {
-        "sport": "basketball",
-        "isoDate": "2026-01-10T15:00:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "POLE FRANCE",
-        "away": "AULNOYE",
-        "competition": "LF2",
-        "round": "J14",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
-        "isoDate": "2026-01-10T16:00:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "STADE DE REIMS 2",
-        "away": "ST QUENTIN O.",
-        "competition": "N3 - Senior",
-        "round": "Journée 12",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
-        "isoDate": "2026-01-10T17:00:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "JA DRANCY",
-        "away": "LILLE LOSC ASSOCIATI 2",
-        "competition": "N3 - Senior",
-        "round": "Journée 12",
-        "location": "N/A"
-    },
-    {
-        "sport": "basketball",
-        "isoDate": "2026-01-10T19:00:00.000Z",
-        "date": "samedi 10 janvier 2026",
-        "home": "STADE FRANCAIS BASKET",
-        "away": "LAMBOISIERES-MARTIN BASKET - 1",
-        "competition": "NF1",
-        "round": "J11",
-        "location": "N/A"
-    },
-    {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949476/",
         "isoDate": "2026-01-14T19:00:00.000Z",
         "date": "mercredi 14 janvier 2026",
         "home": "CHAMBRAY TOURAINE HANDBALL",
@@ -111,6 +12,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949485/",
         "isoDate": "2026-01-14T19:00:00.000Z",
         "date": "mercredi 14 janvier 2026",
         "home": "PARIS 92",
@@ -121,6 +23,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/nor/comites/0027/clubs/nor0027002/equipes/200000005152397",
         "isoDate": "2026-01-16T19:00:00.000Z",
         "date": "vendredi 16 janvier 2026",
         "home": "ALM EVREUX BASKET",
@@ -131,6 +34,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U17_6/saison",
         "isoDate": "2026-01-17T13:30:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "PARIS SAINT-GERMAIN",
@@ -141,6 +45,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500942-vimy-us/equipe/2025_773_SEM_1/saison",
         "isoDate": "2026-01-17T13:30:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "VIMY US",
@@ -151,6 +56,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500568-paris-fc/equipe/2025_616_U17_17/saison",
         "isoDate": "2026-01-17T13:30:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "PARIS FC",
@@ -161,16 +67,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152781",
         "isoDate": "2026-01-17T14:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "NANTERRE 92",
-        "away": "J.L. BOURG BASKET",
+        "away": "JEUNESSE LAIQUE BOURG EN BRESSE",
         "competition": "ESPOIRS",
         "round": "J14",
         "location": "N/A"
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152783",
         "isoDate": "2026-01-17T16:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "PARIS BASKETBALL",
@@ -181,6 +89,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/539013-racing-club-france/equipe/2025_19429_SEM_2/saison",
         "isoDate": "2026-01-17T17:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "RACING CLUB FRANCE",
@@ -191,6 +100,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500054-lille-losc-associati-2/equipe/2025_199_SEM_8/saison",
         "isoDate": "2026-01-17T17:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "LILLE LOSC ASSOCIATI 2",
@@ -201,6 +111,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/582585-pays-de-cassel-us/equipe/2025_191820_SEM_1/saison",
         "isoDate": "2026-01-17T17:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "PAYS DE CASSEL US",
@@ -211,6 +122,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/560836-le-pays-du-valois-us/equipe/2025_199020_SEM_1/saison",
         "isoDate": "2026-01-17T17:30:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "LE PAYS DU VALOIS US",
@@ -221,6 +133,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0095/clubs/idf0095010/equipes/200000005139349",
         "isoDate": "2026-01-17T19:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "BASKET CLUB FRANCONVILLE (BCF) - 1",
@@ -231,6 +144,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092008/equipes/200000005139361",
         "isoDate": "2026-01-17T19:00:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "ASA SCEAUX",
@@ -241,6 +155,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152746",
         "isoDate": "2026-01-17T19:30:00.000Z",
         "date": "samedi 17 janvier 2026",
         "home": "NANTERRE 92",
@@ -251,6 +166,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/739890-vga-saint-maur/equipe/2025_32963_SEF_4/saison",
         "isoDate": "2026-01-18T12:00:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "VGA SAINT MAUR",
@@ -261,16 +177,7 @@
     },
     {
         "sport": "football",
-        "isoDate": "2026-01-18T13:30:00.000Z",
-        "date": "dimanche 18 janvier 2026",
-        "home": "AFC COMPIEGNE",
-        "away": "RED STAR FC",
-        "competition": "CHAMPIONNAT NATIONAL U17 - U17 - U16",
-        "round": "Journée 16",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500695-aas-sarcelles-21/equipe/2025_670_U19_3/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "AAS SARCELLES 21",
@@ -281,6 +188,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/550141-afc-creil-21/equipe/2025_100490_U19_5/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "AFC CREIL 21",
@@ -291,6 +199,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U18F_2/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "PARIS SAINT-GERMAIN",
@@ -301,6 +210,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/539013-racing-club-de-france-football/equipe/2025_19429_U19_1/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "RACING CLUB FRANCE 21",
@@ -311,6 +221,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/550679-montrouge-fc-92/equipe/2025_105489_U17_4/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "MONTROUGE FC 92",
@@ -321,6 +232,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500695-aas-sarcelles/equipe/2025_670_SEF_1/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "AAS SARCELLES",
@@ -331,6 +243,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/504891-us-orleans-loiret/equipe/2025_2421_SEF_2/saison",
         "isoDate": "2026-01-18T13:30:00.000Z",
         "date": "dimanche 18 janvier 2026",
         "home": "US ORLEANS LOIRET",
@@ -341,6 +254,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/542397-stade-de-reims-2/equipe/2025_21944_SEM_10/saison",
         "isoDate": "2026-01-23T19:00:00.000Z",
         "date": "vendredi 23 janvier 2026",
         "home": "STADE DE REIMS 2",
@@ -351,6 +265,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500240-amiens-scf-2/equipe/2025_358_SEM_8/saison",
         "isoDate": "2026-01-24T13:30:00.000Z",
         "date": "samedi 24 janvier 2026",
         "home": "AMIENS SCF 2",
@@ -361,6 +276,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500164-st-quentin-o/equipe/2025_295_SEM_1/saison",
         "isoDate": "2026-01-24T17:00:00.000Z",
         "date": "samedi 24 janvier 2026",
         "home": "ST QUENTIN O.",
@@ -371,6 +287,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005138551",
         "isoDate": "2026-01-24T17:00:00.000Z",
         "date": "samedi 24 janvier 2026",
         "home": "POLE FRANCE",
@@ -381,6 +298,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028005/equipes/200000005138535",
         "isoDate": "2026-01-24T19:00:00.000Z",
         "date": "samedi 24 janvier 2026",
         "home": "CHARTRES",
@@ -391,16 +309,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/hdf/comites/0002/clubs/hdf0002018/equipes/200000005152787",
         "isoDate": "2026-01-25T11:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
-        "home": "SASP - SAINT QUENTIN BASKET BALL",
-        "away": "AS MONACO BASKET-BALL S.A.",
+        "home": "SQBB - JSC",
+        "away": "AS MONACO BASKET",
         "competition": "ESPOIRS",
         "round": "J15",
         "location": "N/A"
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/582560-c-chartres-football-23/equipe/2025_191772_U19_13/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "C CHARTRES FOOTBALL 23",
@@ -411,6 +331,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500568-paris-fc-21/equipe/2025_616_U19_4/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "PARIS FC 21",
@@ -421,6 +342,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U19_4/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "PARIS SAINT-GERMAIN 21",
@@ -431,6 +353,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/539013-racing-club-de-france-football/equipe/2025_19429_U17_3/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "RACING CLUB FRANCE",
@@ -441,6 +364,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/508884-neuilly-marne-sfc/equipe/2025_3359_SEM_1/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "NEUILLY MARNE SFC",
@@ -451,6 +375,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500650-versailles-78-f-c/equipe/2025_656_U17_4/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "VERSAILLES 78 FC",
@@ -461,6 +386,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/516125-cs-mainvilliers/equipe/2025_4969_U17_12/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "CS MAINVILLIERS",
@@ -471,6 +397,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/544913-mantois-78-fc/equipe/2025_23013_U17_4/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "MANTOIS 78 FC",
@@ -481,6 +408,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500217-cs-bretigny-football/equipe/2025_343_U17_3/saison",
         "isoDate": "2026-01-25T13:30:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "CS BRETIGNY FOOTBALL",
@@ -491,16 +419,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/pdl/comites/0072/clubs/pdl0072021/equipes/200000005152744",
         "isoDate": "2026-01-25T18:00:00.000Z",
         "date": "dimanche 25 janvier 2026",
         "home": "LE MANS SARTHE BASKET",
-        "away": "ASVEL BASKET (SAS)",
+        "away": "ASVEL BASKET",
         "competition": "BETCLICE",
         "round": "J17",
         "location": "N/A"
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949484/",
         "isoDate": "2026-01-28T19:30:00.000Z",
         "date": "mercredi 28 janvier 2026",
         "home": "STELLA SAINT-MAUR HANDBALL",
@@ -511,16 +441,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/nor/comites/0027/clubs/nor0027002/equipes/200000005152397",
         "isoDate": "2026-01-30T19:00:00.000Z",
         "date": "vendredi 30 janvier 2026",
         "home": "ALM EVREUX BASKET",
-        "away": "ORLEANS LOIRET BASKET",
+        "away": "ORLEANS LOIRET BASKET ASSOCIATION",
         "competition": "ÉLIT2",
         "round": "J21",
         "location": "N/A"
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152781",
         "isoDate": "2026-01-31T13:30:00.000Z",
         "date": "samedi 31 janvier 2026",
         "home": "NANTERRE 92",
@@ -531,6 +463,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152783",
         "isoDate": "2026-01-31T14:00:00.000Z",
         "date": "samedi 31 janvier 2026",
         "home": "PARIS BASKETBALL",
@@ -541,16 +474,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/hdf/comites/0002/clubs/hdf0002018/equipes/200000005152787",
         "isoDate": "2026-01-31T16:00:00.000Z",
         "date": "samedi 31 janvier 2026",
-        "home": "SASP - SAINT QUENTIN BASKET BALL",
-        "away": "LIMOGES CSP (SASP)",
+        "home": "SQBB - JSC",
+        "away": "LIMOGES CSP",
         "competition": "ESPOIRS",
         "round": "J16",
         "location": "N/A"
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152746",
         "isoDate": "2026-01-31T17:20:00.000Z",
         "date": "samedi 31 janvier 2026",
         "home": "NANTERRE 92",
@@ -561,6 +496,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075055/equipes/200000005139357",
         "isoDate": "2026-01-31T19:00:00.000Z",
         "date": "samedi 31 janvier 2026",
         "home": "STADE FRANCAIS BASKET",
@@ -571,6 +507,29 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500568-paris-fc-21/equipe/2025_616_U19_4/saison",
+        "isoDate": "2026-02-01T13:30:00.000Z",
+        "date": "dimanche 1 février 2026",
+        "home": "PARIS FC 21",
+        "away": "VALENCIENNES FC 21",
+        "competition": "COUPE GAMBARDELLA CRÉDIT AGRICOLE - U19 - U18",
+        "round": "16èmes de Finale",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500240-amiens-scf-2/equipe/2025_358_SEM_8/saison",
+        "isoDate": "2026-02-01T13:30:00.000Z",
+        "date": "dimanche 1 février 2026",
+        "home": "AMIENS SCF 2",
+        "away": "METZ FC 2",
+        "competition": "N3 - Senior",
+        "round": "Journée 12",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/531562-quevilly-rm/equipe/2025_14293_SEF_2/saison",
         "isoDate": "2026-02-01T13:30:00.000Z",
         "date": "dimanche 1 février 2026",
         "home": "QUEVILLY RM",
@@ -581,6 +540,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/536214-saint-denis-rc/equipe/2025_17479_SEF_1/saison",
         "isoDate": "2026-02-01T13:30:00.000Z",
         "date": "dimanche 1 février 2026",
         "home": "SAINT DENIS RC",
@@ -591,6 +551,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949476/",
         "isoDate": "2026-02-04T19:00:00.000Z",
         "date": "mercredi 4 février 2026",
         "home": "CHAMBRAY TOURAINE HANDBALL",
@@ -601,6 +562,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949485/",
         "isoDate": "2026-02-04T19:00:00.000Z",
         "date": "mercredi 4 février 2026",
         "home": "PARIS 92",
@@ -611,6 +573,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957555/",
         "isoDate": "2026-02-06T19:30:00.000Z",
         "date": "vendredi 6 février 2026",
         "home": "CRETEIL US",
@@ -621,6 +584,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957560/",
         "isoDate": "2026-02-06T19:30:00.000Z",
         "date": "vendredi 6 février 2026",
         "home": "PONTAULT-COMBAULT",
@@ -631,6 +595,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U18F_2/saison",
         "isoDate": "2026-02-07T13:30:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "PARIS SAINT-GERMAIN",
@@ -641,6 +606,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005138551",
         "isoDate": "2026-02-07T15:30:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "POLE FRANCE",
@@ -651,16 +617,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152783",
         "isoDate": "2026-02-07T16:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "PARIS BASKETBALL",
-        "away": "SASP SLUC NANCY BASKET",
+        "away": "SLUC NANCY BASKET ASSOCIATION",
         "competition": "ESPOIRS",
         "round": "J17",
         "location": "N/A"
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/539013-racing-club-france/equipe/2025_19429_SEM_2/saison",
         "isoDate": "2026-02-07T17:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "RACING CLUB FRANCE",
@@ -671,6 +639,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/523259-jeanne-d-arc-drancy/equipe/2025_8734_SEM_1/saison",
         "isoDate": "2026-02-07T17:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "JA DRANCY",
@@ -681,6 +650,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500054-lille-losc-associati-2/equipe/2025_199_SEM_8/saison",
         "isoDate": "2026-02-07T17:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "LILLE LOSC ASSOCIATI 2",
@@ -691,6 +661,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/582585-pays-de-cassel-us/equipe/2025_191820_SEM_1/saison",
         "isoDate": "2026-02-07T17:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "PAYS DE CASSEL US",
@@ -701,6 +672,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954490/",
         "isoDate": "2026-02-07T17:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "PARIS SAINT-GERMAIN HANDBALL",
@@ -711,6 +683,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/560836-le-pays-du-valois-us/equipe/2025_199020_SEM_1/saison",
         "isoDate": "2026-02-07T17:30:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "LE PAYS DU VALOIS US",
@@ -721,6 +694,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/pdl/comites/0072/clubs/pdl0072021/equipes/200000005152744",
         "isoDate": "2026-02-07T17:30:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "LE MANS SARTHE BASKET",
@@ -731,6 +705,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "http://ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954529/",
         "isoDate": "2026-02-07T19:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "US CRETEIL HANDBALL",
@@ -741,6 +716,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028005/equipes/200000005138535",
         "isoDate": "2026-02-07T19:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "CHARTRES",
@@ -751,6 +727,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0095/clubs/idf0095010/equipes/200000005139349",
         "isoDate": "2026-02-07T19:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "BASKET CLUB FRANCONVILLE (BCF) - 1",
@@ -761,6 +738,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092008/equipes/200000005139361",
         "isoDate": "2026-02-07T19:00:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "ASA SCEAUX",
@@ -771,6 +749,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954494/",
         "isoDate": "2026-02-07T19:15:00.000Z",
         "date": "samedi 7 février 2026",
         "home": "ELITE VAL-D'OISE",
@@ -781,16 +760,18 @@
     },
     {
         "sport": "football",
-        "isoDate": "2026-02-08T13:30:00.000Z",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/504891-us-orleans-loiret/equipe/2025_2421_SEF_2/saison",
+        "isoDate": "2026-02-08T11:00:00.000Z",
         "date": "dimanche 8 février 2026",
-        "home": "AFC COMPIEGNE",
-        "away": "USL DUNKERQUE",
-        "competition": "CHAMPIONNAT NATIONAL U17 - U17 - U16",
-        "round": "Journée 18",
+        "home": "US ORLEANS LOIRET",
+        "away": "MOLSHEIM ERNOLSHEIM",
+        "competition": "D3 FÉMININE - Senior F",
+        "round": "Journée 15",
         "location": "N/A"
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500695-aas-sarcelles-21/equipe/2025_670_U19_3/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "AAS SARCELLES 21",
@@ -801,6 +782,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/550141-afc-creil-21/equipe/2025_100490_U19_5/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "AFC CREIL 21",
@@ -811,6 +793,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/539013-racing-club-de-france-football/equipe/2025_19429_U19_1/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "RACING CLUB FRANCE 21",
@@ -821,6 +804,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500942-vimy-us/equipe/2025_773_SEM_1/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "VIMY US",
@@ -831,16 +815,7 @@
     },
     {
         "sport": "football",
-        "isoDate": "2026-02-08T13:30:00.000Z",
-        "date": "dimanche 8 février 2026",
-        "home": "CS MAINVILLIERS",
-        "away": "RACING CLUB FRANCE",
-        "competition": "CHAMPIONNAT NATIONAL U17 - U17 - U16",
-        "round": "Journée 18",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/550679-montrouge-fc-92/equipe/2025_105489_U17_4/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "MONTROUGE FC 92",
@@ -851,6 +826,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500568-paris-fc/equipe/2025_616_U17_17/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "PARIS FC",
@@ -861,6 +837,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500695-aas-sarcelles/equipe/2025_670_SEF_1/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "AAS SARCELLES",
@@ -871,6 +848,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/739890-vga-saint-maur/equipe/2025_32963_SEF_4/saison",
         "isoDate": "2026-02-08T13:30:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "VGA SAINT MAUR",
@@ -881,6 +859,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954500/",
         "isoDate": "2026-02-08T15:00:00.000Z",
         "date": "dimanche 8 février 2026",
         "home": "TREMBLAY-EN-FRANCE HANDBALL",
@@ -891,6 +870,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/liqui-moly-starligue-2025-26-28399/equipe-1947866/",
         "isoDate": "2026-02-10T19:00:00.000Z",
         "date": "mardi 10 février 2026",
         "home": "C'CHARTRES METROPOLE HANDBALL",
@@ -901,6 +881,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/560836-le-pays-du-valois-us/equipe/2025_199020_SEM_1/saison",
         "isoDate": "2026-02-13T19:00:00.000Z",
         "date": "vendredi 13 février 2026",
         "home": "LE PAYS DU VALOIS US",
@@ -911,6 +892,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/nor/comites/0027/clubs/nor0027002/equipes/200000005152397",
         "isoDate": "2026-02-13T19:00:00.000Z",
         "date": "vendredi 13 février 2026",
         "home": "ALM EVREUX BASKET",
@@ -921,6 +903,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957558/",
         "isoDate": "2026-02-13T19:30:00.000Z",
         "date": "vendredi 13 février 2026",
         "home": "MASSY ESSONNE",
@@ -931,6 +914,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/542397-stade-de-reims-2/equipe/2025_21944_SEM_10/saison",
         "isoDate": "2026-02-14T16:00:00.000Z",
         "date": "samedi 14 février 2026",
         "home": "STADE DE REIMS 2",
@@ -941,6 +925,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152781",
         "isoDate": "2026-02-14T16:00:00.000Z",
         "date": "samedi 14 février 2026",
         "home": "NANTERRE 92",
@@ -951,6 +936,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500164-st-quentin-o/equipe/2025_295_SEM_1/saison",
         "isoDate": "2026-02-14T17:00:00.000Z",
         "date": "samedi 14 février 2026",
         "home": "ST QUENTIN O.",
@@ -961,6 +947,18 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954535/",
+        "isoDate": "2026-02-14T17:00:00.000Z",
+        "date": "samedi 14 février 2026",
+        "home": "UNION SPORTIVE IVRY HANDBALL",
+        "away": "METZ HANDBALL",
+        "competition": "NATIONALE 1 MASCULINE 2025-26",
+        "round": "JOURNÉE 13",
+        "location": "N/A"
+    },
+    {
+        "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/liqui-moly-starligue-2025-26-28399/equipe-1947866/",
         "isoDate": "2026-02-14T19:00:00.000Z",
         "date": "samedi 14 février 2026",
         "home": "C'CHARTRES METROPOLE HANDBALL",
@@ -971,6 +969,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/531562-quevilly-rm/equipe/2025_14293_SEF_2/saison",
         "isoDate": "2026-02-14T23:00:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "QUEVILLY RM",
@@ -981,6 +980,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/582560-c-chartres-football-23/equipe/2025_191772_U19_13/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "C CHARTRES FOOTBALL 23",
@@ -991,6 +991,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500568-paris-fc-21/equipe/2025_616_U19_4/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "PARIS FC 21",
@@ -1001,6 +1002,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U19_4/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "PARIS SAINT-GERMAIN 21",
@@ -1011,6 +1013,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U17_6/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "PARIS SAINT-GERMAIN",
@@ -1021,16 +1024,7 @@
     },
     {
         "sport": "football",
-        "isoDate": "2026-02-15T13:30:00.000Z",
-        "date": "dimanche 15 février 2026",
-        "home": "RACING CLUB FRANCE",
-        "away": "HAVRE AC",
-        "competition": "CHAMPIONNAT NATIONAL U17 - U17 - U16",
-        "round": "Journée 19",
-        "location": "N/A"
-    },
-    {
-        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500240-amiens-scf-2/equipe/2025_358_SEM_8/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "AMIENS SCF 2",
@@ -1041,6 +1035,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500650-versailles-78-f-c/equipe/2025_656_U17_4/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "VERSAILLES 78 FC",
@@ -1051,6 +1046,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/544913-mantois-78-fc/equipe/2025_23013_U17_4/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "MANTOIS 78 FC",
@@ -1061,6 +1057,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500217-cs-bretigny-football/equipe/2025_343_U17_3/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "CS BRETIGNY FOOTBALL",
@@ -1071,6 +1068,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/536214-saint-denis-rc/equipe/2025_17479_SEF_1/saison",
         "isoDate": "2026-02-15T13:30:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "SAINT DENIS RC",
@@ -1081,6 +1079,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152746",
         "isoDate": "2026-02-15T18:00:00.000Z",
         "date": "dimanche 15 février 2026",
         "home": "NANTERRE 92",
@@ -1091,6 +1090,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/liqui-moly-starligue-2025-26-28399/equipe-1947878/",
         "isoDate": "2026-02-20T19:30:00.000Z",
         "date": "vendredi 20 février 2026",
         "home": "TREMBLAY-EN-FRANCE",
@@ -1101,6 +1101,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957560/",
         "isoDate": "2026-02-20T19:30:00.000Z",
         "date": "vendredi 20 février 2026",
         "home": "PONTAULT-COMBAULT",
@@ -1111,16 +1112,18 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/hdf/comites/0002/clubs/hdf0002018/equipes/200000005152787",
         "isoDate": "2026-02-21T14:30:00.000Z",
         "date": "samedi 21 février 2026",
-        "home": "SASP - SAINT QUENTIN BASKET BALL",
-        "away": "PARIS BASKETBALL",
+        "home": "SQBB - JSC",
+        "away": "PARIS BASKETBALL ASSOCIATION",
         "competition": "ESPOIRS",
         "round": "J18",
         "location": "N/A"
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/582585-pays-de-cassel-us/equipe/2025_191820_SEM_1/saison",
         "isoDate": "2026-02-21T16:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "PAYS DE CASSEL US",
@@ -1131,6 +1134,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/523259-jeanne-d-arc-drancy/equipe/2025_8734_SEM_1/saison",
         "isoDate": "2026-02-21T17:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "JA DRANCY",
@@ -1141,6 +1145,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500054-lille-losc-associati-2/equipe/2025_199_SEM_8/saison",
         "isoDate": "2026-02-21T17:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "LILLE LOSC ASSOCIATI 2",
@@ -1151,6 +1156,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954490/",
         "isoDate": "2026-02-21T17:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "PARIS SAINT-GERMAIN HANDBALL",
@@ -1161,6 +1167,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005138551",
         "isoDate": "2026-02-21T17:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "POLE FRANCE",
@@ -1171,6 +1178,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957555/",
         "isoDate": "2026-02-21T19:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "CRETEIL US",
@@ -1181,6 +1189,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075055/equipes/200000005139357",
         "isoDate": "2026-02-21T19:00:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "STADE FRANCAIS BASKET",
@@ -1191,6 +1200,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954494/",
         "isoDate": "2026-02-21T19:15:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "ELITE VAL-D'OISE",
@@ -1201,6 +1211,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949484/",
         "isoDate": "2026-02-21T19:30:00.000Z",
         "date": "samedi 21 février 2026",
         "home": "STELLA SAINT-MAUR HANDBALL",
@@ -1211,6 +1222,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/508884-neuilly-marne-sfc/equipe/2025_3359_SEM_1/saison",
         "isoDate": "2026-02-22T13:30:00.000Z",
         "date": "dimanche 22 février 2026",
         "home": "NEUILLY MARNE SFC",
@@ -1221,6 +1233,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500942-vimy-us/equipe/2025_773_SEM_1/saison",
         "isoDate": "2026-02-22T13:30:00.000Z",
         "date": "dimanche 22 février 2026",
         "home": "VIMY US",
@@ -1231,6 +1244,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500695-aas-sarcelles/equipe/2025_670_SEF_1/saison",
         "isoDate": "2026-02-22T13:30:00.000Z",
         "date": "dimanche 22 février 2026",
         "home": "AAS SARCELLES",
@@ -1241,6 +1255,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/739890-vga-saint-maur/equipe/2025_32963_SEF_4/saison",
         "isoDate": "2026-02-22T13:30:00.000Z",
         "date": "dimanche 22 février 2026",
         "home": "VGA SAINT MAUR",
@@ -1250,7 +1265,19 @@
         "location": "N/A"
     },
     {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/504891-us-orleans-loiret/equipe/2025_2421_SEF_2/saison",
+        "isoDate": "2026-02-22T13:30:00.000Z",
+        "date": "dimanche 22 février 2026",
+        "home": "US ORLEANS LOIRET",
+        "away": "QUEVILLY RM",
+        "competition": "D3 FÉMININE - Senior F",
+        "round": "Journée 17",
+        "location": "N/A"
+    },
+    {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949485/",
         "isoDate": "2026-02-22T14:00:00.000Z",
         "date": "dimanche 22 février 2026",
         "home": "PARIS 92",
@@ -1261,6 +1288,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028005/equipes/200000005138535",
         "isoDate": "2026-02-22T14:15:00.000Z",
         "date": "dimanche 22 février 2026",
         "home": "CHARTRES",
@@ -1271,6 +1299,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949476/",
         "isoDate": "2026-02-25T19:00:00.000Z",
         "date": "mercredi 25 février 2026",
         "home": "CHAMBRAY TOURAINE HANDBALL",
@@ -1281,6 +1310,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/liqui-moly-starligue-2025-26-28399/equipe-1947878/",
         "isoDate": "2026-02-27T19:30:00.000Z",
         "date": "vendredi 27 février 2026",
         "home": "TREMBLAY-EN-FRANCE",
@@ -1291,6 +1321,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957557/",
         "isoDate": "2026-02-27T19:30:00.000Z",
         "date": "vendredi 27 février 2026",
         "home": "IVRY US",
@@ -1301,6 +1332,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957558/",
         "isoDate": "2026-02-27T19:30:00.000Z",
         "date": "vendredi 27 février 2026",
         "home": "MASSY ESSONNE",
@@ -1311,26 +1343,29 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152783",
         "isoDate": "2026-02-28T16:00:00.000Z",
         "date": "samedi 28 février 2026",
         "home": "PARIS BASKETBALL",
-        "away": "SIG STRASBOURG",
+        "away": "S.I. GRAFFENSTADEN",
         "competition": "ESPOIRS",
         "round": "J19",
         "location": "N/A"
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/hdf/comites/0002/clubs/hdf0002018/equipes/200000005152787",
         "isoDate": "2026-02-28T16:00:00.000Z",
         "date": "samedi 28 février 2026",
-        "home": "SASP - SAINT QUENTIN BASKET BALL",
-        "away": "J.L. BOURG BASKET",
+        "home": "SQBB - JSC",
+        "away": "JEUNESSE LAIQUE BOURG EN BRESSE",
         "competition": "ESPOIRS",
         "round": "J19",
         "location": "N/A"
     },
     {
         "sport": "handball",
+        "sourceUrl": "http://ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954529/",
         "isoDate": "2026-02-28T17:30:00.000Z",
         "date": "samedi 28 février 2026",
         "home": "US CRETEIL HANDBALL",
@@ -1341,6 +1376,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0095/clubs/idf0095010/equipes/200000005139349",
         "isoDate": "2026-02-28T19:00:00.000Z",
         "date": "samedi 28 février 2026",
         "home": "BASKET CLUB FRANCONVILLE (BCF) - 1",
@@ -1351,6 +1387,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092008/equipes/200000005139361",
         "isoDate": "2026-02-28T19:00:00.000Z",
         "date": "samedi 28 février 2026",
         "home": "ASA SCEAUX",
@@ -1361,6 +1398,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957555/",
         "isoDate": "2026-03-03T19:30:00.000Z",
         "date": "mardi 3 mars 2026",
         "home": "CRETEIL US",
@@ -1371,6 +1409,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957560/",
         "isoDate": "2026-03-04T19:30:00.000Z",
         "date": "mercredi 4 mars 2026",
         "home": "PONTAULT-COMBAULT",
@@ -1381,6 +1420,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/nor/comites/0027/clubs/nor0027002/equipes/200000005152397",
         "isoDate": "2026-03-06T19:00:00.000Z",
         "date": "vendredi 6 mars 2026",
         "home": "ALM EVREUX BASKET",
@@ -1391,6 +1431,7 @@
     },
     {
         "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957558/",
         "isoDate": "2026-03-06T19:30:00.000Z",
         "date": "vendredi 6 mars 2026",
         "home": "MASSY ESSONNE",
@@ -1401,6 +1442,7 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005138551",
         "isoDate": "2026-03-07T15:00:00.000Z",
         "date": "samedi 7 mars 2026",
         "home": "POLE FRANCE",
@@ -1411,6 +1453,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/542397-stade-de-reims-2/equipe/2025_21944_SEM_10/saison",
         "isoDate": "2026-03-07T16:00:00.000Z",
         "date": "samedi 7 mars 2026",
         "home": "STADE DE REIMS 2",
@@ -1421,6 +1464,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500164-st-quentin-o/equipe/2025_295_SEM_1/saison",
         "isoDate": "2026-03-07T17:00:00.000Z",
         "date": "samedi 7 mars 2026",
         "home": "ST QUENTIN O.",
@@ -1431,6 +1475,7 @@
     },
     {
         "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/560836-le-pays-du-valois-us/equipe/2025_199020_SEM_1/saison",
         "isoDate": "2026-03-07T17:30:00.000Z",
         "date": "samedi 7 mars 2026",
         "home": "LE PAYS DU VALOIS US",
@@ -1441,12 +1486,123 @@
     },
     {
         "sport": "basketball",
+        "sourceUrl": "https://competitions.ffbb.com/ligues/pdl/comites/0072/clubs/pdl0072021/equipes/200000005152744",
         "isoDate": "2026-03-07T19:00:00.000Z",
         "date": "samedi 7 mars 2026",
         "home": "LE MANS SARTHE BASKET",
         "away": "NANTERRE 92",
         "competition": "BETCLICE",
         "round": "J21",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500695-aas-sarcelles-21/equipe/2025_670_U19_3/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "AAS SARCELLES 21",
+        "away": "AMIENS SC FOOTBALL 21",
+        "competition": "CHAMPIONNAT NATIONAL U19 - U19 - U18",
+        "round": "Journée 20",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/550141-afc-creil-21/equipe/2025_100490_U19_5/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "AFC CREIL 21",
+        "away": "SM CAEN 21",
+        "competition": "CHAMPIONNAT NATIONAL U19 - U19 - U18",
+        "round": "Journée 20",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2025_364_U19_4/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "PARIS SAINT-GERMAIN 21",
+        "away": "PARIS FC 21",
+        "competition": "CHAMPIONNAT NATIONAL U19 - U19 - U18",
+        "round": "Journée 20",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500240-amiens-scf-2/equipe/2025_358_SEM_8/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "AMIENS SCF 2",
+        "away": "JA DRANCY",
+        "competition": "N3 - Senior",
+        "round": "Journée 18",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/550679-montrouge-fc-92/equipe/2025_105489_U17_4/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "MONTROUGE FC 92",
+        "away": "FC ST LO MANCHE",
+        "competition": "CHAMPIONNAT NATIONAL U17 - U17 - U16",
+        "round": "Journée 20",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/500568-paris-fc/equipe/2025_616_U17_17/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "PARIS FC",
+        "away": "PARIS SAINT-GERMAIN",
+        "competition": "CHAMPIONNAT NATIONAL U17 - U17 - U16",
+        "round": "Journée 20",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/531562-quevilly-rm/equipe/2025_14293_SEF_2/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "QUEVILLY RM",
+        "away": "RC ROUBAIX WERVICQ F",
+        "competition": "D3 FÉMININE - Senior F",
+        "round": "Journée 18",
+        "location": "N/A"
+    },
+    {
+        "sport": "football",
+        "sourceUrl": "https://epreuves.fff.fr/competition/club/536214-saint-denis-rc/equipe/2025_17479_SEF_1/saison",
+        "isoDate": "2026-03-08T14:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "SAINT DENIS RC",
+        "away": "FC LORIENT",
+        "competition": "D3 FÉMININE - Senior F",
+        "round": "Journée 18",
+        "location": "N/A"
+    },
+    {
+        "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957555/",
+        "isoDate": "2026-03-08T15:00:00.000Z",
+        "date": "dimanche 8 mars 2026",
+        "home": "CRETEIL US",
+        "away": "BESANCON GRAND DOUBS",
+        "competition": "PROLIGUE 2025-26",
+        "round": "JOURNÉE 21",
+        "location": "N/A"
+    },
+    {
+        "sport": "handball",
+        "sourceUrl": "https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/ligue-butagaz-energie-2025-26-28227/equipe-1949485/",
+        "isoDate": "2026-03-12T19:00:00.000Z",
+        "date": "jeudi 12 mars 2026",
+        "home": "PARIS 92",
+        "away": "ES BESANCON FEMININ",
+        "competition": "LIGUE BUTAGAZ ENERGIE 2025-26",
+        "round": "JOURNÉE 17",
         "location": "N/A"
     }
 ]

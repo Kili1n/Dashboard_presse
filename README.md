@@ -1,4 +1,4 @@
-# Dashboard Presse
+# OnShootKwa
 
 Un **outil de planification tout-en-un** conçu spécifiquement pour les **photographes de sport**.
 
@@ -59,7 +59,7 @@ Ce dashboard centralise les calendriers de plusieurs sports (Football, Basket, H
 
 1. **Cloner le projet**
   ```bash
-   git clone https://github.com/Kili1n/Dashboard_presse.git
+   git clone https://github.com/Kili1n/OnShootKwa.git
   ```
 
 2. **Mise à jour des données (Scraping) Nécessite Node.js installé.**
@@ -73,7 +73,7 @@ Ce dashboard centralise les calendriers de plusieurs sports (Football, Basket, H
 
 ## 📁 Structure du Projet
 ```
-Dashboard_presse/
+OnShootKwa/
 ├── css/
 │   ├── index.css       # Styles principaux et Dark Mode
 │   └── mobile.css      # Adaptations responsive

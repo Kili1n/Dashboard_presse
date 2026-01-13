@@ -414,6 +414,7 @@ async function loadMatches() {
                             
         return {
                 sport: m.sport,
+                sourceUrl: url,
                 competition: m.competition || "N/A",
                 compFormatted: formatCompetition(m.competition, m.sport),
                 home: { name: m.home }, 
@@ -697,7 +698,12 @@ function renderMatches(data) {
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
             </div>
-            <div class="accred-footer">${getAccreditationHTML(m)}</div>
+            <div class="accred-footer">
+                ${getAccreditationHTML(m)}
+                <a href="${m.sourceUrl}" target="_blank" class="source-link" title="Voir la source officielle">
+                    <i class="fa-solid fa-link"></i>
+                </a>
+            </div>
         `;
         grid.appendChild(card);
     });
@@ -710,7 +716,7 @@ function exportToGoogleCalendar(home, away, dateObj, comp, sport, coords) {
     const endTime = formatDate(new Date(dateObj.getTime() + 2 * 60 * 60 * 1000));
 
     const title = encodeURIComponent(`${home} vs ${away}`);
-    const details = encodeURIComponent(`Accréditation photographe sur le match ${home} vs ${away} en ${comp} - Généré via Dashboard Presse`);
+    const details = encodeURIComponent(`Accréditation photographe sur le match ${home} vs ${away} en ${comp} - Généré via OnShootKwa`);
     
     // Modification ici : si coords existe, on met "lat,lon", sinon le nom du club
     const locationValue = coords ? `${coords.lat},${coords.lon}` : home;
