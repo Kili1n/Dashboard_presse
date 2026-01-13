@@ -115,6 +115,68 @@ const getAccreditationHTML = (match) => {
     return `<div class="accred-status accred-unavailable"><i class="fa-solid fa-circle-xmark"></i> <span>Inconnu</span></div>`;
 };
 
+// --- LOGIQUE STATUS MULTIPLES ---
+
+// 1. Chargement : On récupère un objet { "matchID": "status", ... }
+let matchStatuses = JSON.parse(localStorage.getItem('matchStatuses') || '{}');
+
+// Ordre du cycle des statuts
+const STATUS_CYCLE = [null, 'envie', 'asked', 'received'];
+
+// Helpers visuels (Icône selon le statut)
+const getStatusIcon = (status) => {
+    switch(status) {
+        case 'envie': return 'fa-solid fa-star';          // Étoile pleine
+        case 'asked': return 'fa-solid fa-paper-plane';   // Avion papier
+        case 'received': return 'fa-solid fa-circle-check'; // Coche validée
+        default: return 'fa-regular fa-star';             // Étoile vide
+    }
+};
+
+const getMatchId = (m) => {
+    const h = m.home.name.replace(/\s+/g, '');
+    const a = m.away.name.replace(/\s+/g, '');
+    const d = m.dateObj.toISOString().split('T')[0];
+    return `${h}_${a}_${d}`;
+};
+
+// 2. Fonction de cycle appelée au clic
+function cycleStatus(event, matchId) {
+    event.stopPropagation();
+    const btn = event.currentTarget;
+    const icon = btn.querySelector('i');
+
+    // Trouver le statut actuel et le suivant
+    const currentStatus = matchStatuses[matchId] || null;
+    const currentIndex = STATUS_CYCLE.indexOf(currentStatus);
+    const nextIndex = (currentIndex + 1) % STATUS_CYCLE.length;
+    const nextStatus = STATUS_CYCLE[nextIndex];
+
+    // Mise à jour des données
+    if (nextStatus) {
+        matchStatuses[matchId] = nextStatus;
+    } else {
+        delete matchStatuses[matchId]; // Si on revient à null, on supprime
+    }
+    localStorage.setItem('matchStatuses', JSON.stringify(matchStatuses));
+
+    // Mise à jour visuelle immédiate (Classes)
+    btn.classList.remove('status-envie', 'status-asked', 'status-received');
+    if (nextStatus) btn.classList.add(`status-${nextStatus}`);
+
+    // Mise à jour de l'icône
+    icon.className = getStatusIcon(nextStatus);
+    
+    // Mise à jour du titre pour l'accessibilité
+    const titles = {
+        envie: "Envie d'y aller",
+        asked: "Accréditation demandée",
+        received: "Accréditation confirmée !",
+        null: "Ajouter au suivi"
+    };
+    btn.title = titles[nextStatus] || titles.null;
+}
+
 const getTeamCoords = (name) => {
     const upperName = name.toUpperCase();
     const key = Object.keys(STADIUM_COORDS).find(k => upperName.includes(k));
@@ -515,6 +577,24 @@ function applyFilters() {
 }
 
     filtered.sort((a, b) => {
+        if (currentFilters.sortBy === "favorite") {
+            // On donne un poids à chaque statut pour le tri
+            const weights = { 'received': 3, 'asked': 2, 'envie': 1 };
+            
+            const statusA = matchStatuses[getMatchId(a)];
+            const statusB = matchStatuses[getMatchId(b)];
+            
+            const weightA = weights[statusA] || 0;
+            const weightB = weights[statusB] || 0;
+
+            // Le plus grand poids en premier
+            if (weightA !== weightB) {
+                return weightB - weightA;
+            }
+            
+            // Si même statut, tri par date
+            return a.dateObj - b.dateObj;
+        }
         if (currentFilters.sortBy === "distance") {
             return (a.distance || 9999) - (b.distance || 9999);
         }
@@ -550,6 +630,11 @@ function renderMatches(data) {
     data.forEach(m => {
         const card = document.createElement('article');
         card.className = 'card';
+
+        const matchId = getMatchId(m);
+        const currentStatus = matchStatuses[matchId] || null;
+        const statusClass = currentStatus ? `status-${currentStatus}` : '';
+
         const emoji = SPORT_EMOJIS[m.sport.toLowerCase()] || "🏟️";
         const coordsArg = m.locationCoords ? JSON.stringify(m.locationCoords) : 'null';
         
@@ -568,11 +653,14 @@ function renderMatches(data) {
         }
 
         card.innerHTML = `
+            <button class="fav-btn ${statusClass}" 
+                    onclick="cycleStatus(event, '${matchId}')" 
+                    title="Cliquez pour changer le statut">
+                <i class="${getStatusIcon(currentStatus)}"></i>
+            </button>
             <div class="match-header">
                 <div class="team">
-                    <img src="${getLogoUrl(m.home.name)}" 
-                         class="team-logo" 
-                         onerror="console.warn('Logo manquant (Home):', '${m.home.name.replace(/'/g, "\\'")}'); this.src='https://placehold.co/42x42/png?text=H'">
+                    <img src="${getLogoUrl(m.home.name)}" class="team-logo" onerror="this.src='https://placehold.co/42x42/png?text=H'">
                     <span class="team-name">${m.home.name}</span>
                 </div>
                 <div class="match-center">
@@ -580,9 +668,7 @@ function renderMatches(data) {
                     <div class="vs">VS</div>
                 </div>
                 <div class="team">
-                    <img src="${getLogoUrl(m.away.name)}" 
-                         class="team-logo" 
-                         onerror="console.warn('Logo manquant (Away):', '${m.away.name.replace(/'/g, "\\'")}'); this.src='https://placehold.co/42x42/png?text=A'">
+                    <img src="${getLogoUrl(m.away.name)}" class="team-logo" onerror="this.src='https://placehold.co/42x42/png?text=A'">
                     <span class="team-name">${m.away.name}</span>
                 </div>
             </div>
@@ -809,3 +895,29 @@ function updateFilterSlider() {
     // Déclenchement quand on clique ailleurs (changement de focus)
     cityInput.addEventListener('change', handleCitySearch);
 });
+
+// --- GESTION DES MAILS DU FOOTER ---
+
+function sendFooterMail(type) {
+    const adminEmail = "lentzkilian@gmail.com";
+    let subject = "";
+    let body = "";
+
+    switch(type) {
+        case 'add':
+            subject = "Demande d'ajout de club";
+            body = "Bonjour Kilian,\n\nJ'aimerais suggérer l'ajout du club suivant :\n- Nom du club : \n- Sport : \n- Niveau : ";
+            break;
+        case 'bug':
+            subject = "Signalement de bug";
+            body = "Bonjour,\nJ'ai rencontré un problème sur le dashboard :";
+            break;
+        case 'contact':
+            subject = "Prise de contact Dashboard";
+            body = "Bonjour,";
+            break;
+    }
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${adminEmail}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, '_blank');
+}

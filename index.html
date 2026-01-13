@@ -65,6 +65,7 @@
                         <option value="date">📅 Date</option>
                         <option value="distance">📍 Distance</option>
                         <option value="level">🏆 Niveau</option>
+                        <option value="favorite">⭐ Favoris</option>
                     </select>
                 </div>
 
@@ -83,6 +84,56 @@
         <div class="matches-grid" id="grid"></div>
     </div>
 
+    <footer id="mainFooter">
+        <div class="footer-content">
+            
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <i class="fa-solid fa-map-location-dot"></i> Dashboard Presse
+                </div>
+                <p class="footer-desc">
+                    L'outil de planification indispensable pour les photographes de sport. Trouvez vos matchs, gérez vos accréditations et simplifiez vos déplacements.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contribuer</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#" onclick="sendFooterMail('add'); return false;">
+                                <i class="fa-solid fa-circle-plus"></i> Demander un ajout de club
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="sendFooterMail('bug'); return false;">
+                                <i class="fa-solid fa-bug"></i> Signaler un bug
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>
+                        <a href="https://www.instagram.com/kiksf4" target="_blank">
+                            <i class="fa-brands fa-instagram"></i> @kiksf4
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="sendFooterMail('contact'); return false;">
+                            <i class="fa-regular fa-envelope"></i> Contact Email
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kilian LENTZ</p>
+        </div>
+    </footer>
     <script src="js/config.js"></script> 
     <script src="js/index.js"></script> 
 </body>
