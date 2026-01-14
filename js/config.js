@@ -21,7 +21,8 @@ const ACCRED_LIST = {
     "PARIS FC" : "https://parisfc.fr/presse/",
     "RACING CLUB FRANCE" : "https://www.instagram.com/racing_cff/",
     "LE MANS" : "communication@msb.fr",
-    "BRETIGNY" : "csbfootball@orange.fr"
+    "BRETIGNY" : "csbfootball@orange.fr",
+    "PARIS BASKETBALL" : "https://www.instagram.com/parisbasketball.asso/"
 };
 
 const CUSTOM_LOGOS = {
