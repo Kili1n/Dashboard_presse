@@ -33,7 +33,28 @@ const FOOTBALL_URLS = [
     'https://epreuves.fff.fr/competition/club/531562-quevilly-rm/equipe/2025_14293_SEF_2/saison',
     'https://epreuves.fff.fr/competition/club/739890-vga-saint-maur/equipe/2025_32963_SEF_4/saison',
     'https://epreuves.fff.fr/competition/club/536214-saint-denis-rc/equipe/2025_17479_SEF_1/saison',
-    'https://epreuves.fff.fr/competition/club/504891-us-orleans-loiret/equipe/2025_2421_SEF_2/saison'    
+    'https://epreuves.fff.fr/competition/club/504891-us-orleans-loiret/equipe/2025_2421_SEF_2/saison',
+    'https://epreuves.fff.fr/competition/club/537103-le-mans-fc/equipe/2025_18056_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/500240-amiens-scf/equipe/2025_358_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/542397-stade-de-reims/equipe/2025_21944_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/500002-red-star-f-c/equipe/2025_154_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/500037-fc-rouen-1899/equipe/2025_184_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/504891-orleans-us-45/equipe/2025_2421_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/500650-versailles-78-fc/equipe/2025_656_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/524861-fleury-91-fc/equipe/2025_9753_SEM_2/saison',
+    'https://epreuves.fff.fr/competition/club/523264-paris-13-atletico/equipe/2025_8738_SEM_10/saison',
+    'https://epreuves.fff.fr/competition/club/531562-qrm/equipe/2025_14293_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/536772-chambly-oise-fc/equipe/2025_17767_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/500260-chantilly-us/equipe/2025_374_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/500108-beauvais-oise-as/equipe/2025_244_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/548861-st-pryve-st-hilaire/equipe/2025_25783_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/526258-st-maur-lusitanos/equipe/2025_10744_SEM_2/saison',
+    'https://epreuves.fff.fr/competition/club/500689-creteil-lusitanos-f/equipe/2025_667_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/532133-²-bobigny/equipe/2025_14718_SEM_1/saison',
+    'https://epreuves.fff.fr/competition/club/537103-le-mans-fc/equipe/2025_18056_SEF_3/saison',
+    'https://epreuves.fff.fr/competition/club/500568-paris-fc/equipe/2025_616_SEF_1/saison',
+    'https://epreuves.fff.fr/competition/club/524861-fc-fleury-91/equipe/2025_9753_SEF_1/saison',
+    'https://epreuves.fff.fr/competition/club/500247-paris-saint-germain/equipe/2025_364_SEF_1/saison'    
 ];
 
 const BASKET_URLS = [
@@ -46,7 +67,9 @@ const BASKET_URLS = [
     'https://competitions.ffbb.com/ligues/nor/comites/0027/clubs/nor0027002/equipes/200000005152397',
     'https://competitions.ffbb.com/ligues/idf/comites/0095/clubs/idf0095010/equipes/200000005139349',
     'https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092008/equipes/200000005139361',
-    'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075055/equipes/200000005139357'
+    'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075055/equipes/200000005139357',
+    'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152748',
+    'https://competitions.ffbb.com/ligues/hdf/comites/0002/clubs/hdf0002018/equipes/200000005152752'
 ];
 
 const HANDBALL_URLS = [
@@ -58,7 +81,7 @@ const HANDBALL_URLS = [
     'https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954494/',
     'https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954500/',
     'https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954535/',
-    'http://ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954529/',
+    'http://www.ffhandball.fr/competitions/saison-2025-2026-21/national/nationale-1-masculine-2025-26-28229/equipe-1954529/',
     'https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/liqui-moly-starligue-2025-26-28399/equipe-1947866/',
     'https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/proligue-2025-26-28551/equipe-1957555/',
     'https://www.ffhandball.fr/competitions/saison-2025-2026-21/national/liqui-moly-starligue-2025-26-28399/equipe-1947878/',
