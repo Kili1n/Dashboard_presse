@@ -242,7 +242,6 @@ const STADIUM_COORDS = {
     "STELLA": { lat: 48.804, lon: 2.483 }, 
     "CHAMBRAY": { lat: 47.339, lon: 0.708 },
     "PARIS 92": { lat: 48.825, lon: 2.274 }, 
-    "CHARTRES": { lat: 48.434, lon: 1.488 }, 
     "PSG": { lat: 48.836, lon: 2.253 }, 
     "ELITE VAL-D'OISE": { lat: 48.990, lon: 2.221 }, 
     "TREMBLAY": { lat: 48.948, lon: 2.569 }, 
@@ -251,7 +250,6 @@ const STADIUM_COORDS = {
     "PONTAULT-COMBAULT": { lat: 48.796, lon: 2.611 }, 
     "MASSY ESSONNE": { lat: 48.730, lon: 2.275 },
     "DRANCY" : { lat: 48.9262, lon: 2.4593 },
-    "TREMBLAY" : { lat: 48.9572, lon: 2.5700 }
     "IVRY US": { lat: 48.812, lon: 2.392 }, 
     "CRETEIL": { lat: 48.776, lon: 2.450 }, 
     "PONTAULT-COMBAULT": { lat: 48.796, lon: 2.611 }, 
