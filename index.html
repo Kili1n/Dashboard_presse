@@ -58,8 +58,20 @@
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .btn-primary {
-            background: var(--accent); color: white;
+            background: var(--accent);
+            color: white;
             box-shadow: 0 0 20px var(--accent-glow);
+            /* Correction ici : pour un bouton parfaitement rond sur les côtés */
+            border-radius: 50px; 
+            padding: 14px 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 30px var(--accent-glow);
         }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--accent-glow); }
         .btn-secondary {
@@ -238,6 +250,9 @@
             transform: scale(1.05);
         }
 
+        #last_list {
+            padding-bottom: 40px;
+        }
         /* Légende en bas de l'image */
 /* --- AMÉLIORATION LISIBILITÉ GALERIE --- */
 
@@ -289,6 +304,82 @@
                 object-position: top center;
             }
         }
+.final-cta {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, #0071E3 0%, #0056b3 100%);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 113, 227, 0.2);
+}
+
+.cta-card .btn-primary:hover {
+    transform: scale(1.05);
+    background: #f5f5f7;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Adaptation Mobile */
+@media (max-width: 768px) {
+    .cta-card {
+        padding: 40px 20px;
+        border-radius: 20px;
+    }
+    .cta-card h2 {
+        font-size: 1.8rem;
+    }
+}   
+
+/* --- FIX MOBILE GLOBAL --- */
+@media (max-width: 768px) {
+    /* 1. La carte CTA */
+    .cta-card {
+        padding: 40px 15px !important; /* Moins de padding latéral pour laisser de la place au bouton */
+        margin: 0 10px;
+    }
+
+    .cta-card h2 {
+        font-size: 1.8rem !important;
+        line-height: 1.1;
+    }
+
+    /* 2. LE FIX DU BOUTON (L'élément qui bug sur ton image) */
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .cta-card .btn-primary {
+        width: 100%;          /* Le bouton prend toute la largeur disponible */
+        max-width: 320px;     /* Mais ne devient pas gigantesque sur tablette */
+        font-size: 0.95rem !important; /* On réduit légèrement la taille du texte */
+        padding: 14px 15px !important; /* On réduit le padding interne */
+        white-space: normal;  /* Permet au texte de passer sur deux lignes proprement si besoin */
+        text-align: center;
+        display: inline-block; /* Meilleur comportement pour le wrap de texte */
+        line-height: 1.2;
+        border-radius: 12px !important; /* IMPORTANT : Sur mobile, on oublie le format "pilule" si le texte est long, 
+                                           le format arrondi (12px) est bien plus stable visuellement. */
+    }
+
+    /* 3. Section Problem (Texte) */
+    .problem-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+        text-align: left;
+    }
+    
+    .problem-content h3 {
+        font-size: 1.6rem !important;
+    }
+
+}
+        
     </style>
 </head>
 <body>
@@ -400,9 +491,63 @@
         </div>
     </div>
 
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2 class="text-accent" style="font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;">Le constat</h2>
+                    <h3 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 24px;">La logistique du photographe est un <span style="color: #ff3b30;">casse-tête</span>.</h3>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px;">
+                        Aujourd'hui, planifier une sortie terrain demande de jongler entre les sites des fédérations, Google Maps pour les distances, et vos propres notes pour ne pas oublier de relancer un club.
+                    </p>
+                    <ul class="problem-list">
+                        <li><i class="fa-solid fa-circle-xmark" style="color: #ff3b30;"></i> Calendriers éparpillés entre Foot, Basket et Hand.</li>
+                        <li><i class="fa-solid fa-circle-xmark" style="color: #ff3b30;"></i> Calcul manuel des trajets pour chaque match.</li>
+                        <li id="last_list"><i class="fa-solid fa-circle-xmark" style="color: #ff3b30;"></i> Perte de temps à chercher les contacts presse.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works" style="padding: 100px 0; background: #080808; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 class="text-gradient" style="font-size: 2.5rem; margin-bottom: 16px;">Comment ça marche ?</h2>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Trois étapes simples pour passer de la planification au bord du terrain.</p>
+            </div>
+            
+            <div class="grid-3" style="grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative;">
+                
+                <div class="step-card" style="text-align: center;">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-weight: 800; box-shadow: 0 0 20px var(--accent-glow);">1</div>
+                    <h3 style="margin-bottom: 12px;">Filtrez & Explorez</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Utilisez les filtres par sport (Foot, Basket, Hand) ou la <strong>carte interactive</strong> pour repérer les matchs dans votre zone. Les calendriers sont synchronisés à J+60.
+                    </p>
+                </div>
+
+                <div class="step-card" style="text-align: center;">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-weight: 800; box-shadow: 0 0 20px var(--accent-glow);">2</div>
+                    <h3 style="margin-bottom: 12px;">Calculez votre trajet</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Entrez votre ville ou récupérez votre position. L'algorithme calcule instantanément <strong>le temps de trajet et la météo</strong> prévue au coup d'envoi. Un clic, et le match est dans votre Google Agenda.
+                    </p>
+                </div>
+
+                <div class="step-card" style="text-align: center;">
+                    <div class="step-number" style="width: 40px; height: 40px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-weight: 800; box-shadow: 0 0 20px var(--accent-glow);">3</div>
+                    <h3 style="margin-bottom: 12px;">Gérez vos demandes</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                        Générez votre mail de demande via nos templates. Puis utilisez le <strong>cycle de suivi</strong> (demandée, en cours, reçue) pour savoir où en sont vos accréditations.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
     <section id="features" class="features-section">
         <div class="container">
-            <h2 style="font-size: 2rem; margin-bottom: 40px;">Votre bureau, avant le terrain.</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 40px;">La solution : FokalPress</h2>
             
 <div class="grid-3">
     
@@ -568,7 +713,28 @@
             height: 400px !important;
         }
     }
+
+    /* --- FINAL CTA STYLES --- */
+
 </style>
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-card">
+                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Prêt à optimiser votre saison ?</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Rejoignez les photographes qui gagnent des heures de planification chaque semaine.
+                </p>
+                <div class="cta-buttons">
+                    <a href="app.html" class="btn-primary" style="padding: 18px 40px; font-size: 1.1rem; background: #fff; color: var(--accent);">
+                        <i class="fa-solid fa-rocket"></i> Lancer le Dashboard gratuitement
+                    </a>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
+                    <i class="fa-solid fa-check"></i> Sans inscription • <i class="fa-solid fa-check"></i> 100% Open Source
+                </p>
+            </div>
+        </div>
+    </section>
     <footer>
         <div class="container">
             <div class="footer-links" style="margin-bottom: 20px;">
