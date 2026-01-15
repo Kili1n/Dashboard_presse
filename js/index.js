@@ -4,7 +4,7 @@ const SPORT_EMOJIS = { "football": "⚽", "basketball": "🏀", "handball": "�
 // États globaux
 let allMatches = [];
 let currentlyFiltered = []; 
-let currentFilters = { week: "", comp: "all", sport: "all", accredOnly: false, sortBy: "date", search: "" };
+let currentFilters = { week: "", comp: "all", sport: "all", accredOnly: false, sortBy: "date", search: "", maxDist: 300 };
 let userPosition = null;
 let isCalculating = false;
 const travelCache = new Map();
@@ -575,7 +575,7 @@ function populateCompFilter(filteredMatches) {
 }
 
 function resetFilters() {
-    currentFilters = { week: "", comp: "all", sport: "all", accredOnly: false, sortBy: "date", search: "" };
+    currentFilters = { week: "", comp: "all", sport: "all", accredOnly: false, sortBy: "date", search: "", maxDist: 300 };
     
     // Reset des éléments UI
     document.getElementById('weekFilter').value = "";
@@ -589,6 +589,14 @@ function resetFilters() {
 
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+
+    const slider = document.getElementById('distSlider');
+    const label = document.getElementById('distValue');
+    
+    if (slider && label) {
+        slider.value = 300;        // Remet le curseur à droite
+        label.textContent = "300km"; // Remet le texte à jour
+    }
     
     updateFilterSlider();
     applyFilters();
@@ -603,14 +611,12 @@ function applyFilters() {
     filtered = filtered.filter(m => {
         return m.dateObj >= today;
     });
-    
+
     filtered = filtered.filter(m => {
-        if (m.times.car === 0 && m.times.public === 0) return true;
-
-        const isTooFarByCar = m.times.car > 100;
-        const isTooFarByBus = m.times.public > 150;
-
-        return !(isTooFarByCar && isTooFarByBus);
+        if (m.distance > 0 && m.distance > currentFilters.maxDist) {
+            return false; 
+        }
+        return true;
     });
 
     if (currentFilters.search) {
@@ -969,6 +975,56 @@ function updateFilterSlider() {
 
     // Déclenchement quand on clique ailleurs (changement de focus)
     cityInput.addEventListener('change', handleCitySearch);
+
+    const viewToggle = document.getElementById('viewToggle');
+    const matchesGrid = document.getElementById('grid');
+    const viewIcon = viewToggle.querySelector('i');
+
+    // Fonction pour appliquer la vue
+    const setViewMode = (mode) => {
+        if (mode === 'list') {
+            matchesGrid.classList.add('list-view');
+            viewToggle.classList.add('active');
+            viewIcon.classList.replace('fa-list', 'fa-border-all');
+            viewToggle.title = "Passer en vue Grille";
+        } else {
+            matchesGrid.classList.remove('list-view');
+            viewToggle.classList.remove('active');
+            viewIcon.classList.replace('fa-border-all', 'fa-list');
+            viewToggle.title = "Passer en vue Liste";
+        }
+        localStorage.setItem('viewMode', mode);
+    };
+
+    // Chargement de la préférence
+    const savedView = localStorage.getItem('viewMode');
+    if (savedView === 'list') {
+        setViewMode('list');
+    }
+
+    // Event Listener
+    viewToggle.addEventListener('click', () => {
+        const isList = matchesGrid.classList.contains('list-view');
+        setViewMode(isList ? 'grid' : 'list');
+    });
+
+    const distSlider = document.getElementById('distSlider');
+    const distValue = document.getElementById('distValue');
+
+    // On vérifie que les éléments existent AVANT d'ajouter les écouteurs
+    if (distSlider && distValue) {
+        
+        // Mise à jour visuelle
+        distSlider.addEventListener('input', (e) => {
+            distValue.textContent = e.target.value + "km";
+        });
+
+        // Application du filtre
+        distSlider.addEventListener('change', (e) => {
+            currentFilters.maxDist = parseInt(e.target.value);
+            applyFilters();
+        });
+    }
 });
 
 // --- GESTION DES MAILS DU FOOTER ---

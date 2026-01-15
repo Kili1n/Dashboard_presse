@@ -98,7 +98,6 @@
         width: 44px;
         height: 44px;
         flex-shrink: 0;
-        background: #FFF;
         border: 1px solid #E5E5E7;
         border-radius: 10px;
     }
@@ -194,6 +193,13 @@
     .team-name { font-size: 12px; }
 
     #themeToggle {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    }
+
+    #viewToggle {
     width: 44px;
     height: 44px;
     flex-shrink: 0;

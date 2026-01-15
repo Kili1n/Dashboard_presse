@@ -267,6 +267,7 @@ const STADIUM_COORDS = {
     "BEAUVAIS OISE": { lat: 49.4344, lon: 2.1121 }, 
     "LE MANS FC": { lat: 47.9576, lon: 0.2244 }, 
     "AMIENS SCF": { lat: 49.8936, lon: 2.2633 },
+    "MAINVILLIERS" : { lat: 48.4545, lon: 1.4524 }
 };
 
 const WEATHER_ICONS = {

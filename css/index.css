@@ -541,3 +541,149 @@ body.dark-mode .footer-bottom {
 body.dark-mode .source-link:hover {
     color: #FFF;
 }
+
+/* --- VUE LISTE CONDENSÉE --- */
+
+/* 1. La grille devient une colonne unique */
+.matches-grid.list-view {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+/* 2. La carte devient une ligne horizontale */
+.matches-grid.list-view .card {
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 20px;
+    height: auto;
+    min-height: 60px;
+}
+
+/* 3. Réorganisation du Header (Equipes + Score/Heure) */
+.matches-grid.list-view .match-header {
+    flex: 2; /* Prend le plus de place */
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 0; /* Annule la marge mobile */
+}
+
+.matches-grid.list-view .team {
+    flex-direction: row;
+    width: auto;
+    gap: 8px;
+}
+
+/* On inverse l'ordre pour l'équipe domicile : Nom - Logo */
+.matches-grid.list-view .team:first-child {
+    flex-direction: row-reverse; 
+}
+
+.matches-grid.list-view .team-logo {
+    width: 24px;
+    height: 24px;
+}
+
+.matches-grid.list-view .team-name {
+    font-size: 13px;
+    text-align: right;
+    width: auto;
+    max-width: 150px;
+    height: auto;
+    -webkit-line-clamp: 1; /* Une seule ligne */
+}
+.matches-grid.list-view .team:last-child .team-name {
+    text-align: left;
+}
+
+/* Centre (VS / Heure) */
+.matches-grid.list-view .match-center {
+    min-width: 50px;
+}
+.matches-grid.list-view .match-time {
+    font-size: 13px;
+    background: var(--tag-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.matches-grid.list-view .vs { display: none; } /* On cache le "VS" pour gagner de la place */
+
+/* 4. Métadonnées (Date, Badge) */
+.matches-grid.list-view .match-meta {
+    flex: 1;
+    border-top: none;
+    padding-top: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-width: 140px;
+}
+.matches-grid.list-view .calendar-btn {
+    display: none; /* Optionnel : on cache le bouton calendrier si trop chargé */
+}
+
+/* 5. Transports */
+.matches-grid.list-view .transport-block {
+    flex: 1.5;
+    background: transparent;
+    padding: 0;
+    border: none;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+/* 6. Footer Accréditation */
+.matches-grid.list-view .accred-footer {
+    flex: 1;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    justify-content: flex-end;
+    max-width: 200px;
+}
+.matches-grid.list-view .accred-status {
+    justify-content: flex-end;
+}
+.matches-grid.list-view .accred-email {
+    display: none; /* On cache l'email en texte pour ne garder que les icônes */
+}
+
+/* 7. Bouton Favoris */
+.matches-grid.list-view .fav-btn {
+    position: static; /* Remet le bouton dans le flux */
+    order: -1; /* Le met tout à gauche */
+    margin-right: 10px;
+    font-size: 14px;
+}
+.matches-grid.list-view .card:hover {
+    transform: none; /* Enlève l'effet de levée en mode liste pour plus de sobriété */
+    background-color: rgba(0,0,0,0.02); /* Légère surbrillance */
+}
+
+/* --- RESPONSIVE : RETOUR EN GRILLE SUR MOBILE --- */
+@media (max-width: 768px) {
+    .matches-grid.list-view {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+    .matches-grid.list-view .card {
+        flex-direction: column;
+        padding: 16px;
+        gap: 12px;
+        height: auto;
+    }
+    /* On réinitialise tous les styles forcés ci-dessus pour le mobile */
+    .matches-grid.list-view .match-header { margin-bottom: 0; width: 100%; justify-content: space-between; }
+    .matches-grid.list-view .team { flex-direction: column; width: 42%; }
+    .matches-grid.list-view .team:first-child { flex-direction: column; }
+    .matches-grid.list-view .team-name { text-align: center; max-width: none; -webkit-line-clamp: 2; }
+    .matches-grid.list-view .team-logo { width: 42px; height: 42px; }
+    .matches-grid.list-view .match-meta { flex-direction: row; border-top: 1px solid var(--border-color); padding-top: 10px; width: 100%; }
+    .matches-grid.list-view .transport-block { background: #FAFAFA; padding: 8px 12px; width: 100%; }
+    .matches-grid.list-view .accred-footer { border-top: 1px solid var(--border-color); padding-top: 10px; width: 100%; justify-content: space-between; max-width: none; }
+    .matches-grid.list-view .accred-email { display: block; }
+    .matches-grid.list-view .fav-btn { position: absolute; }
+    .matches-grid.list-view .vs { display: block; }
+    
+    /* Dark mode fix pour mobile */
+    body.dark-mode .matches-grid.list-view .transport-block { background: var(--tag-bg); }
+}
