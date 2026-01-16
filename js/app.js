@@ -80,20 +80,20 @@ const formatCompetition = (rawName, sport) => {
 };
 
 function openGmailCompose(email, homeTeam, awayTeam, matchDate, sport, compet) {
-    // On utilise désormais les paramètres passés à la fonction pour le sujet
-    const subject = encodeURIComponent(`Demande d'accréditation photographe : ${matchDate} vs ${awayTeam}`);
+    const subject = encodeURIComponent(`Demande d'accréditation : ${homeTeam} vs ${awayTeam} (${matchDate})`);
     
-    // Le corps du mail est maintenant dynamique selon le match et la date
-    const body = encodeURIComponent(`Bonjour,\n\nJe me permets de vous contacter en tant que photographe, passionné par le ${sport}, afin de solliciter une accréditation pour le match ${homeTeam} vs ${awayTeam} (${compet}) prévu le ${matchDate}.\n
-Cette opportunité me permettra de mon côté d'enrichir mon portfolio. Et du vôtre, si vous le souhaitez, je vous fournirai à l'issue de la rencontre les photos pour vos communications.
-Vous pouvez avoir un aperçu de mon travail sur mon compte Instagram : @kiksf4
-
-Je reste à votre entière disposition pour toute information complémentaire.
-
-En vous remerciant par avance de votre considération.
-
-Cordialement,
-Kilian LENTZ`);
+    const body = encodeURIComponent(
+        `Bonjour,\n\n` +
+        `Je me permets de vous contacter en tant que photographe afin de solliciter une accréditation pour le match ${homeTeam} vs ${awayTeam} (${compet}) prévu le ${matchDate}.\n\n` +
+        `Passionné par le ${sport}, cette rencontre serait pour moi l'opportunité d'enrichir mon portfolio. En contrepartie, je pourrais, si vous le souhaitez, mettre à votre disposition les clichés réalisés pour vos supports de communication.\n\n` +
+        `Vous pouvez avoir un aperçu de mon travail ici : [LIEN VERS VOTRE PORTFOLIO / INSTAGRAM]\n\n` +
+        `Je reste à votre entière disposition pour toute information complémentaire.\n\n` +
+        `Cordialement,\n\n` +
+        `[VOTRE NOM ET PRÉNOM]\n` +
+        `[VOTRE NUMÉRO DE TÉLÉPHONE]\n` +
+        `---\n` +
+        `Demande préparée via fokalpress.fr - Outil de planification pour photographes de sport.`
+    );
     
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
     window.open(gmailUrl, '_blank');
@@ -1248,28 +1248,66 @@ function updateFilterSlider() {
 
 });
 
-// --- GESTION DES MAILS DU FOOTER ---
 
 function sendFooterMail(type) {
-    const adminEmail = "lentzkilian@gmail.com";
-    let subject = "";
-    let body = "";
+    const adminEmail = "contact@fokalPress.fr"; 
+    const siteTitle = "Fokal Press";
 
-    switch(type) {
-        case 'add':
-            subject = "Demande d'ajout de club";
-            body = "Bonjour Kilian,\n\nJ'aimerais suggérer l'ajout du club suivant :\n- Nom du club : \n- Sport : \n- Niveau : ";
-            break;
-        case 'bug':
-            subject = "Signalement de bug";
-            body = "Bonjour,\nJ'ai rencontré un problème sur le dashboard :";
-            break;
-        case 'contact':
-            subject = "Prise de contact Dashboard";
-            body = "Bonjour,";
-            break;
-    }
+    const mailConfigs = {
+        'add': {
+            subject: `[${siteTitle}] Suggestion d'ajout : Nouveau Club`,
+            body: "Bonjour,\n\n" +
+                  "Je souhaiterais suggérer l'ajout d'une nouvelle entité sur le dashboard :\n\n" +
+                  "• Nom du club : \n" +
+                  "• Discipline (Foot/Basket/Hand) : \n" +
+                  "• Niveau de compétition : \n" +
+                  "• Lien site fédération (si connu) : \n\n" +
+                  "Cordialement,\n" +
+                  "[Prénom NOM]"
+        },
+        'suggest': {
+            subject: `[${siteTitle}] Suggestion de contact d'accréditation`,
+            body: "Bonjour,\n\n" +
+                  "Je souhaite proposer un contact d'accréditation vérifié pour la base de données :\n\n" +
+                  "• Club concerné : \n" +
+                  "• Niveau de compétition : \n" +
+                  "• Adresse e-mail de contact : \n\n" +
+                  "IMPORTANT : Conformément aux règles de fiabilité, j'ai joint à cet e-mail une capture d'écran d'une réponse officielle du club prouvant la validité de ce contact.\n\n" +
+                  "Cordialement,\n" +
+                  "[Prénom NOM]"
+        },
+        'remove': {
+            subject: `[${siteTitle}] Demande de retrait de données`,
+            body: "Bonjour,\n\n" +
+                  "En tant que propriétaire légitime, je sollicite le retrait des informations suivantes de votre plateforme :\n\n" +
+                  "• Élément à supprimer (Nom du club ou adresse e-mail) : \n" +
+                  "• Motif du retrait : \n\n" +
+                  "IMPORTANT : J'ai joint à cet e-mail un justificatif prouvant ma qualité de propriétaire ou de responsable autorisé pour cette entité.\n\n" +
+                  "Dans l'attente de votre confirmation,\n\n" +
+                  "Cordialement,\n" +
+                  "[Prénom NOM]"
+        },
+        'bug': {
+            subject: `[${siteTitle}] Signalement d'anomalie`,
+            body: "Bonjour,\n\n" +
+                  "Je signale un dysfonctionnement technique :\n" +
+                  "- \n\n" +
+                  "Infos techniques :\n" +
+                  `• Date : ${new Date().toLocaleString('fr-FR')}\n` +
+                  `• Navigateur : ${navigator.userAgent}\n` +
+                  "Cordialement,\n" +
+                  "[Prénom NOM]"
+        },
+        'contact': {
+            subject: `[${siteTitle}] Prise de contact`,
+            body: "Bonjour,\n\n"
+        }
+    };
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${adminEmail}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const config = mailConfigs[type] || mailConfigs['contact'];
+    const encodedSubject = encodeURIComponent(config.subject);
+    const encodedBody = encodeURIComponent(config.body);
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${adminEmail}&su=${encodedSubject}&body=${encodedBody}`;
+    
     window.open(gmailUrl, '_blank');
 }
