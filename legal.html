@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales & Confidentialité - Fokal Press</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><path d='M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z' fill='%23007BFF'/><path transform='translate(0, -2)' d='M14.8333 9H13.6667L12.9375 8.25H11.0625L10.3333 9H9.16667C8.525 9 8 9.525 8 10.1667V13.6667C8 14.3083 8.525 14.8333 9.16667 14.8333H14.8333C15.475 14.8333 16 14.3083 16 13.6667V10.1667C16 9.525 15.475 9 14.8333 9ZM12 13.9583C10.8708 13.9583 9.95833 13.0458 9.95833 11.9167C9.95833 10.7875 10.8708 9.875 12 9.875C13.1292 9.875 14.0417 10.7875 14.0417 11.9167C14.0417 13.0458 13.1292 13.9583 12 13.9583Z' fill='white'/></svg>">
+    
+    <style>
+        :root {
+            --bg-body: #050505;
+            --bg-card: #121212;
+            --accent: #0071E3;
+            --accent-glow: rgba(0, 113, 227, 0.5);
+            --text-main: #ffffff;
+            --text-muted: #a1a1a6;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header {
+            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); padding: 16px 0;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; }
+
+        .legal-content {
+            margin: 60px auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; letter-spacing: -1px; }
+        h2 { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-top: 32px; margin-bottom: 16px; }
+        p { color: var(--text-muted); margin-bottom: 16px; font-size: 1rem; }
+        ul { margin-bottom: 24px; padding-left: 20px; }
+        li { color: var(--text-muted); margin-bottom: 8px; font-size: 0.95rem; }
+        strong { color: white; font-weight: 600; }
+
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); font-weight: 600; text-decoration: none;
+            margin-bottom: 24px; transition: 0.3s;
+        }
+        .btn-back:hover { opacity: 0.8; transform: translateX(-4px); }
+
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links a { margin: 0 10px; text-decoration: none; color: var(--text-muted); transition: 0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .legal-content { padding: 24px; margin: 30px auto; border-radius: 16px; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <div style="position: relative; width: 28px; height: 38px; background: #ffffff; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; margin-right: 16px; overflow: hidden; transform: rotate(-8deg);">
+                    <div style="width: 8px; height: 3px; background: #e0e0e0; border-radius: 2px; margin-top: 3px;"></div>
+                    <div style="width: 100%; height: 6px; background: var(--accent); margin-top: 3px;"></div>
+                    <div style="position: relative; flex-grow: 1; display: flex; align-items: center; justify-content: center; padding-bottom: 2px; width: 100%;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 16.5L8 14.5L14 16.5L21 13.5V20.5L14 23.5L8 21.5L3 23.5V16.5Z" fill="#e0e0e0"/>
+                            <path d="M8 14.5V21.5M14 16.5V23.5" stroke="white" stroke-width="0.5"/>
+                            <g transform="translate(3, 0) scale(0.75)">
+                                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="var(--accent)"/>
+                                <path transform="translate(0, -2)" d="M14.8333 9H13.6667L12.9375 8.25H11.0625L10.3333 9H9.16667C8.525 9 8 9.525 8 10.1667V13.6667C8 14.3083 8.525 14.8333 9.16667 14.8333H14.8333C15.475 14.8333 16 14.3083 16 13.6667V10.1667C16 9.525 15.475 9 14.8333 9ZM12 13.9583C10.8708 13.9583 9.95833 13.0458 9.95833 11.9167C9.95833 10.7875 10.8708 9.875 12 9.875C13.1292 9.875 14.0417 10.7875 14.0417 11.9167C14.0417 13.0458 13.1292 13.9583 12 13.9583Z" fill="white"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div> 
+                Fokal<span style="font-weight: 400; opacity: 0.8;">Press</span>
+            </a>
+            <a href="app.html" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; text-decoration: none;">Accéder à l'App</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="legal-content">
+            <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Retour au site</a>
+            
+            <h1 class="text-gradient">Mentions Légales & Politique de Confidentialité</h1>
+
+            <section>
+                <h2>1. Édition du site</h2>
+                <p>Le site <strong>Fokal Press</strong> (fokalpress.fr) est un projet personnel bénévole édité par :</p>
+                <ul>
+                    <li><strong>Nom :</strong> Kilian LENTZ</li>
+                    <li><strong>Contact :</strong> contact@fokalPress.fr</li>
+                    <li><strong>Statut :</strong> Éditeur non professionnel (Loi n° 2004-575 du 21 juin 2004).</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>2. Hébergement et Domaine</h2>
+                <p><strong>Hébergeur :</strong> GitHub Inc. – 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.</p>
+                <p><strong>Domaine :</strong> OVH SAS – 2 rue Kellermann, 59100 Roubaix, France.</p>
+            </section>
+
+            <section>
+                <h2>3. Confidentialité & Transfert de données (RGPD)</h2>
+                <p>Fokal Press ne possède aucun serveur de base de données. Pour assurer ses fonctionnalités, le site interagit avec des services tiers uniquement lorsque cela est nécessaire :</p>
+                <ul>
+                    <li><strong>Transfert de données :</strong> Pour calculer un itinéraire ou obtenir la météo, vos coordonnées GPS ou le nom de votre ville de départ sont envoyés <strong>exclusivement suite à une action volontaire de votre part (clic sur un bouton de calcul ou de localisation)</strong> aux services <strong>Geoapify</strong> et <strong>Open-Meteo</strong>. Aucune de ces informations n'est stockée par Fokal Press sur un serveur externe.</li>
+                    <li><strong>LocalStorage (Usage local) :</strong> Pour améliorer votre expérience et permettre le suivi de vos démarches, les informations suivantes sont conservées directement sur votre navigateur :
+                        <ul>
+                            <li><strong>Statuts d'accréditation :</strong> Votre historique de suivi pour chaque match (mini-CRM : Envie, Demandée, Reçue, Refusée).</li>
+                            <li><strong>Localisation de départ :</strong> Votre dernière position GPS ou ville de départ saisie pour les calculs de trajet.</li>
+                            <li><strong>Préférences d'interface :</strong> Votre choix de thème (Mode Sombre/Clair) et votre mode d'affichage favori (Grille ou Liste).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. Services Google & Liens externes</h2>
+                <p>L'outil propose des interactions avec les services Google (export Google Agenda, itinéraires Google Maps, ouverture de Gmail).</p>
+                <p><strong>Important :</strong> Dès lors que vous cliquez sur ces liens ou boutons, vous quittez le site Fokal Press. Votre navigation est alors soumise aux politiques de confidentialité et conditions d'utilisation de <strong>Google</strong>. Fokal Press ne saurait être tenu responsable des traitements de données effectués par ces services tiers.</p>
+            </section>
+
+            <section>
+                <h2>5. Propriété Intellectuelle & Licences</h2>
+                <p>Le code source original de ce projet est la propriété de <strong>Kilian Lentz</strong> et est mis à disposition en <strong>Open Source</strong> sur <a href="https://github.com/Kili1n/Fokal-Press" target="_blank" style="color: var(--accent); text-decoration: underline;">GitHub</a>.</p>
+                
+                <p>Fokal Press utilise et s'appuie sur les composants et données libres suivants :</p>
+                <ul>
+                    <li><strong>Leaflet :</strong> Bibliothèque cartographique utilisée sous licence BSD-2-Clause.</li>
+                    <li><strong>OpenStreetMap :</strong> Les données cartographiques affichées via Leaflet proviennent d'OpenStreetMap (données © contributeurs OpenStreetMap sous licence ODbL).</li>
+                    <li><strong>Logos des clubs :</strong> La propriété des logos et marques reste celle des organisations sportives respectives. Ils sont utilisés sur ce site à titre purement informatif.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>6. Responsabilité et Agrégation de contenu</h2>
+                <p><strong>Calendriers :</strong> Les données proviennent d'automatisations de sources publiques. Fokal Press ne garantit pas l'absence d'erreurs d'horaires ou de reports. L'utilisateur doit vérifier les informations officielles avant tout déplacement.</p>
+                <p><strong>Modèles de mails :</strong> Fokal Press propose des modèles de mails (templates) pour faciliter vos démarches d'accréditation. L'éditeur décline toute responsabilité quant au contenu final des messages envoyés ou à une utilisation abusive de ce système par l'utilisateur final.</p>
+                <p><strong>Agrégation de contenu :</strong> Fokal Press agit en tant qu'agrégateur de contenu. Les informations de contact étant fournies par des tiers (communauté), l'éditeur ne peut être tenu responsable de l'inexactitude des e-mails ou d'un usage détourné des outils mis à disposition.</p>
+            </section>
+
+            <section>
+                <h2>7. Répertoire des contacts et Droit de retrait</h2>
+                <p><strong>Nature du répertoire :</strong> Le répertoire des contacts "Accréditations" est alimenté de manière <strong>collaborative par la communauté des utilisateurs</strong>. Ces informations sont strictement destinées à faciliter les demandes d'accréditation professionnelles.</p>
+                <p><strong>Droit de retrait (RGPD) :</strong> Conformément au RGPD, toute personne dont l'adresse e-mail figurerait dans cette base de données sans son consentement peut en demander la suppression immédiate par simple mail à <strong>lentzkilian@gmail.com</strong>. Nous nous engageons à retirer l'information du fichier source.</p>
+                <p>Si vous représentez un club ou une fédération et souhaitez le retrait global de vos informations, vous pouvez également utiliser cette adresse de contact.</p>
+            </section>
+
+            <section style="margin-top: 40px; opacity: 0.5; font-size: 0.8rem; text-align: center;">
+                Dernière mise à jour : Janvier 2026
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links" style="margin-bottom: 20px;">
+                <a href="https://instagram.com/kiksf4" target="_blank">Instagram</a>
+                <a href="https://github.com/Kili1n/Fokal-Press" target="_blank">GitHub</a>
+                <a href="mailto:contact@fokalPress.fr">Contact</a>
+            </div>
+            <p>&copy; 2026 Fokal Press. Développé par Kilian Lentz.</p>
+        </div>
+    </footer>
+
+</body>
+</html> 
