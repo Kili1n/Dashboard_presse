@@ -79,11 +79,15 @@ const formatCompetition = (rawName, sport) => {
     return `${sportLabel} - ${level} - ${age}`;
 };
 
+const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+           || window.innerWidth <= 768;
+};
+
 function openGmailCompose(email, homeTeam, awayTeam, matchDate, sport, compet) {
-    const subject = encodeURIComponent(`Demande d'accréditation : ${homeTeam} vs ${awayTeam} (${matchDate})`);
+    const subject = `Demande d'accréditation : ${homeTeam} vs ${awayTeam} (${matchDate})`;
     
-    const body = encodeURIComponent(
-        `Bonjour,\n\n` +
+    const body = `Bonjour,\n\n` +
         `Je me permets de vous contacter en tant que photographe afin de solliciter une accréditation pour le match ${homeTeam} vs ${awayTeam} (${compet}) prévu le ${matchDate}.\n\n` +
         `Passionné par le ${sport}, cette rencontre serait pour moi l'opportunité d'enrichir mon portfolio. En contrepartie, je pourrais, si vous le souhaitez, mettre à votre disposition les clichés réalisés pour vos supports de communication.\n\n` +
         `Vous pouvez avoir un aperçu de mon travail ici : [LIEN VERS VOTRE PORTFOLIO / INSTAGRAM]\n\n` +
@@ -92,11 +96,15 @@ function openGmailCompose(email, homeTeam, awayTeam, matchDate, sport, compet) {
         `[VOTRE NOM ET PRÉNOM]\n` +
         `[VOTRE NUMÉRO DE TÉLÉPHONE]\n` +
         `---\n` +
-        `Demande préparée via fokalpress.fr - Outil de planification pour photographes de sport.`
-    );
+        `Demande préparée via fokalpress.fr - Outil de planification pour photographes de sport.`;
     
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
-    window.open(gmailUrl, '_blank');
+    if (isMobile()) {
+        const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoUrl;
+    } else {
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(gmailUrl, '_blank');
+    }
 }
 
 const getAccreditationHTML = (match) => {
@@ -476,6 +484,7 @@ async function loadMatches() {
                 home: { name: m.home }, 
                 away: { name: m.away },
                 dateDisplay: m.date,
+                dateShort: d.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: '2-digit' }), 
                 dateObj: d,
                 time: time,
                 locationCoords: getTeamCoords(m.home),
