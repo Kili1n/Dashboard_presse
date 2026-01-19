@@ -1170,8 +1170,10 @@ body.dark-mode .delete-btn:hover {
 
 /* Ajustement optionnel : Agrandir légèrement les icônes en mode liste 
    pour qu'elles soient plus faciles à cliquer maintenant qu'elles sont seules */
-.matches-grid.list-view .card .accred-status i {
-    font-size: 1.1rem;
+@media (min-width: 768px) {
+    .matches-grid.list-view .card .accred-status i {
+        font-size: 1.1rem;
+    }
 }
 
 /* Gère l'espacement entre les icônes (Copie / Mail / Lien) */
