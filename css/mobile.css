@@ -285,39 +285,114 @@
     }
 }
 }
-
-/* --- RESPONSIVE MOBILE --- */
-@media (max-width: 768px) {
-    .footer-content {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
-        gap: 30px;
-        text-align: center;
-    }
-
-    .footer-brand, .footer-links a {
-        justify-content: center; /* Centre les éléments */
-    }
-
-    .footer-desc {
-        margin: 0 auto; /* Centre le texte de description */
-    }
+/* --- Styles par défaut (On cache les éléments "courts" sur Desktop) --- */
+.badge-short, .date-short {
+    display: none;
 }
-
-/* --- OPTIMISATION MOBILE : EMOJIS SEULEMENT --- */
+/* --- RESPONSIVE : VUE LISTE MOBILE OPTIMISÉE --- */
 @media (max-width: 768px) {
-    /* Cache le texte à l'intérieur des spans que nous avons créés */
-    .filter-btn .btn-text {
-        display: none;
+
+    /* 2. Styles spécifiques à la VUE LISTE */
+    .matches-grid.list-view {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
     }
 
-    /* Ajuste le bouton pour qu'il soit joli avec juste un émoji */
-    .filter-btn {
-        font-size: 18px; /* On grossit un peu l'émoji */
-        padding: 6px 12px; /* On ajuste les marges */
+    .matches-grid.list-view .card {
+        flex-direction: row !important;
+        align-items: center;
+        padding: 8px 12px !important;
+        gap: 10px;
+        min-height: 50px;
+    }
+
+    /* --- EQUIPES : Logos seulement --- */
+    .matches-grid.list-view .team {
+        width: auto !important;
+        flex-direction: row !important;
+        margin: 0 !important;
+    }
+    .matches-grid.list-view .team-name { display: none !important; }
+    .matches-grid.list-view .team-logo {
+        width: 32px !important;
+        height: 32px !important;
+        object-fit: contain;
+    }
+
+    /* --- HEADER : Logo - Heure - Logo --- */
+    .matches-grid.list-view .match-header {
+        width: auto !important;
+        margin-bottom: 0 !important;
+        justify-content: center;
+        gap: 8px;
+    }
+    .matches-grid.list-view .match-center { min-width: auto !important; }
+    .matches-grid.list-view .match-time {
+        font-size: 12px !important;
+        background: #F2F2F7;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-weight: 700;
+    }
+    .matches-grid.list-view .vs { display: none !important; }
+
+    /* --- METADONNEES : Badge Court et Date Courte --- */
+    .matches-grid.list-view .match-meta {
+        flex: 1;
+        border-top: none !important;
+        padding-top: 0 !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center;
+        gap: 2px !important;
+        margin-left: 5px;
+    }
+
+    /* Affiche uniquement les versions courtes */
+    .matches-grid.list-view .badge-long { display: none !important; }
+    .matches-grid.list-view .badge-short { display: flex !important; font-size: 10px; font-weight: 700; opacity: 0.8; }
+    
+    .matches-grid.list-view .date-long { display: none !important; }
+    .matches-grid.list-view .date-short { display: block !important; font-size: 11px; color: #86868B; }
+
+    /* --- ACCREDITATION : ICÔNES SEULEMENT --- */
+    .matches-grid.list-view .accred-footer {
+        width: auto !important;
+        border-top: none !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        gap: 12px; /* Espace entre les icônes */
+    }
+
+    /* C'est ici que la magie opère : on cache tous les textes marqués dans le JS */
+    .matches-grid.list-view .accred-text {
+        display: none !important; /* Cache le texte de l'email */
+    }
+
+    /* Optionnel : Ajuster l'espacement pour que les icônes ne soient pas trop serrées */
+    .matches-grid.list-view .accred-status {
+        gap: 15px !important; 
     }
     
-    /* Cas spécifique pour le bouton "Tous" qui n'a pas d'émoji */
-    .filter-btn[data-filter="all"] {
-        font-size: 13px; /* On garde la taille de texte normale pour "Tous" */
+    .matches-grid.list-view .accred-email {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }   
+
+    
+
+    /* --- AUTRES ELEMENTS --- */
+    .matches-grid.list-view .transport-block { display: none !important; }
+    .matches-grid.list-view .source-link { display: none !important; }
+    
+    .matches-grid.list-view .fav-btn {
+        position: static !important;
+        font-size: 14px;
+        margin-right: 5px;
+        background: none !important;
+        border: none !important;
     }
 }

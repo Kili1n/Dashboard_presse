@@ -28,6 +28,27 @@ const getLogoUrl = (name) => {
     return finalUrl;
 };
 
+const getShortComp = (formattedComp, sport) => {
+    if (formattedComp === "AUTRE") return "🔖";
+    
+    // On récupère l'émoji
+    const emoji = SPORT_EMOJIS[sport.toLowerCase()] || "🏟️";
+    
+    // On décompose "SPORT - L1 - SENIOR"
+    const parts = formattedComp.split(' - ');
+    // parts[0] = Sport (on a déjà l'émoji)
+    const level = parts[1] || "";
+    let age = parts[2] || "";
+
+    // Abréviations
+    if (age === "SENIOR") age = "S";
+    else if (age === "SENIOR F") age = "SF";
+    else if (age === "U21" || age === "ESPOIRS") age = "U21";
+    
+    // Retourne "🏀 - L1 - S"
+    return `${emoji} - ${level} - ${age}`;
+};
+
 const formatCompetition = (rawName, sport) => {
     if (!rawName) return "MATCH";
     const name = rawName.toUpperCase();
@@ -133,32 +154,36 @@ const getAccreditationHTML = (match) => {
         
         if (contact.startsWith('http')) {
             return `<div class="accred-status accred-available">
-                        <i class="fa-solid fa-external-link-alt"></i> 
-                        <a href="${contact}" target="_blank" class="accred-email">Plateforme</a>
+                        <a href="${contact}" target="_blank" class="accred-email" title="Accéder à la plateforme" style="display:flex; align-items:center; gap:6px;">
+                            <i class="fa-solid fa-external-link-alt"></i> 
+                            <span class="accred-text">Plateforme</span>
+                        </a>
                     </div>`;
         } 
 
         const d = match.dateObj;
         const shortDate = ("0" + d.getDate()).slice(-2) + "/" + ("0" + (d.getMonth() + 1)).slice(-2);
-
         const home = match.home.name.replace(/'/g, "\\'");
         const away = match.away.name.replace(/'/g, "\\'");
         const compRaw = match.competition.replace(/'/g, "\\'");
         const sportComplet = match.sport;
 
         return `
-            <div class="accred-status accred-available" style="gap: 10px;">
+            <div class="accred-status accred-available" style="gap: 12px;">
                 <a href="#" onclick="copyToClipboard(event, '${contact}')" title="Copier le mail">
                     <i class="fa-solid fa-copy"></i>
                 </a>
                 <a href="#" onclick="openGmailCompose('${contact}', '${home}', '${away}', '${shortDate}', '${sportComplet}', '${compRaw}')" title="Ouvrir dans Gmail" style="color: #ea4335;">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
-                <span class="accred-email">${contact}</span>
+                <span class="accred-text accred-email-text">${contact}</span>
             </div>`;
-    }
+        }
     
-    return `<div class="accred-status accred-unavailable"><i class="fa-solid fa-circle-xmark"></i> <span>Inconnu</span></div>`;
+    return `<div class="accred-status accred-unavailable">
+                <i class="fa-solid fa-circle-xmark"></i> 
+                <span class="accred-text">Inconnu</span>
+            </div>`;
 };
 
 // --- LOGIQUE STATUS MULTIPLES ---
@@ -793,6 +818,61 @@ function renderMatches(data) {
             <div class="accred-footer">
                 ${getAccreditationHTML(m)}
                 <a href="${m.sourceUrl}" target="_blank" class="source-link" title="Voir la source officielle">
+                    <i class="fa-solid fa-link"></i>
+                </a>
+            </div>
+        `;
+
+const compShort = getShortComp(m.compFormatted, m.sport);
+
+        card.innerHTML = `
+            <button class="fav-btn ${statusClass}" onclick="cycleStatus(event, '${matchId}')">
+                <i class="${getStatusIcon(currentStatus)}"></i>
+            </button>
+            <div class="match-header">
+                <div class="team">
+                    <img src="${getLogoUrl(m.home.name)}" class="team-logo" onerror="this.src='https://placehold.co/42x42/png?text=H'">
+                    <span class="team-name">${m.home.name}</span>
+                </div>
+                <div class="match-center">
+                    <div class="match-time">${m.time}</div>
+                    <div class="vs">VS</div>
+                </div>
+                <div class="team">
+                    <img src="${getLogoUrl(m.away.name)}" class="team-logo" onerror="this.src='https://placehold.co/42x42/png?text=A'">
+                    <span class="team-name">${m.away.name}</span>
+                </div>
+            </div>
+            <div class="match-meta">
+                
+                <span class="badge badge-long"><span>${emoji}</span> ${m.compFormatted}</span>
+                <span class="badge badge-short">${compShort}</span>
+
+                <div class="date-group" style="display: flex; align-items: center; gap: 8px;">
+                    <span class="date-time date-long">${m.dateDisplay}</span>
+                    <span class="date-time date-short">${m.dateShort}</span>
+
+                    <button class="calendar-btn" 
+                            onclick='exportToGoogleCalendar("${m.home.name.replace(/"/g, "")}", "${m.away.name.replace(/"/g, "")}", new Date("${m.dateObj.toISOString()}"), "${m.compFormatted}", "${m.sport}", ${coordsArg})'>
+                        <i class="fa-solid fa-calendar-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="transport-block">
+                <div class="transport-info">
+                    <div class="distance">${distText}</div>
+                    <div class="modes">
+                        ${m.weather ? `<div class="mode weather-badge">${m.weather}</div>` : ''}
+                        <div class="mode"><i class="fa-solid fa-car"></i> ${m.times.car || '--'}'</div>
+                    </div>
+                </div>
+                <a href="${mapsUrl}" target="_blank" class="maps-arrow ${!m.locationCoords ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
+            <div class="accred-footer">
+                ${getAccreditationHTML(m)}
+                <a href="${m.sourceUrl}" target="_blank" class="source-link">
                     <i class="fa-solid fa-link"></i>
                 </a>
             </div>
