@@ -279,13 +279,24 @@ function cycleStatus(event, matchId) {
         delete matchStatuses[matchId];
     }
 
-    // 2. Mise à jour du Cache Local (Pour que ça reste fluide au rechargement de page)
-    // C'est nécessaire même connecté, sinon l'étoile disparaît au F5 avant que Firebase ne réponde
+    // 2. Mise à jour du Cache Local
     localStorage.setItem('matchStatuses', JSON.stringify(matchStatuses));
 
-    // 3. Mise à jour Cloud (Si connecté)
+    // 3. LOGIQUE CONNEXION & CLOUD
     if (auth.currentUser) {
+        // A. Si connecté : On synchronise avec Firebase
         syncFavoriteToFirebase(matchId, nextStatus);
+    } else {
+        // B. Si PAS connecté : On ouvre notre belle popup HTML (Une seule fois)
+        if (nextStatus && !localStorage.getItem('hasShownLoginHint')) {
+            
+            // On marque qu'on a affiché le message pour ne plus le spammer
+            localStorage.setItem('hasShownLoginHint', 'true');
+
+            // On affiche la modale HTML au lieu du confirm() moche
+            const hintModal = document.getElementById('favHintModal');
+            if (hintModal) hintModal.classList.remove('hidden');
+        }
     }
 
     // 4. Mise à jour Visuelle
@@ -293,7 +304,6 @@ function cycleStatus(event, matchId) {
     if (nextStatus) btn.classList.add(`status-${nextStatus}`);
     icon.className = getStatusIcon(nextStatus);
     
-    // Titres (Accessibilité)
     const titles = {
         envie: "Envie d'y aller",
         asked: "Accréditation demandée",
@@ -303,7 +313,6 @@ function cycleStatus(event, matchId) {
     };
     btn.title = titles[nextStatus] || titles.null;
 }
-
 const getTeamCoords = (name) => {
     const upperName = name.toUpperCase();
     const key = Object.keys(STADIUM_COORDS).find(k => upperName.includes(k));
@@ -1493,6 +1502,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const settingsLogoutBtn = document.getElementById('settingsLogoutBtn');
     const deleteAccountBtn = document.getElementById('deleteAccountBtn');
 
+    // --- GESTION POPUP FAVORIS ---
+    const favHintModal = document.getElementById('favHintModal');
+    const closeFavHintBtn = document.getElementById('closeFavHintBtn');
+    const favLoginBtn = document.getElementById('favLoginBtn');
+    const favDismissBtn = document.getElementById('favDismissBtn');
+
+    // 1. Clic sur "Me connecter maintenant"
+    if (favLoginBtn) {
+        favLoginBtn.addEventListener('click', () => {
+            favHintModal.classList.add('hidden'); // On ferme la pub
+            loginModal.classList.remove('hidden'); // On ouvre le vrai login
+            // On s'assure d'afficher la vue connexion
+            document.getElementById('loginView').style.display = 'block';
+            document.getElementById('completeProfileView').style.display = 'none';
+        });
+    }
+
+    // 2. Clic sur "Plus tard" ou la Croix
+    const closeFavHint = () => favHintModal.classList.add('hidden');
+    
+    if (favDismissBtn) favDismissBtn.addEventListener('click', closeFavHint);
+    if (closeFavHintBtn) closeFavHintBtn.addEventListener('click', closeFavHint);
+    
+    // Fermeture en cliquant dehors
+    favHintModal.addEventListener('click', (e) => {
+        if (e.target === favHintModal) closeFavHint();
+    });
+
     // --- 1. ÉCOUTEUR D'ÉTAT AUTHENTIFICATION (Chargement initial) ---
     auth.onAuthStateChanged(async (user) => {
         if (user) {
@@ -1879,7 +1916,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resetAllButtons(); // <--- AJOUT ICI
         }
     });
-    
+
     loginModal.addEventListener('click', (e) => {
         if (e.target === loginModal) {
             const user = auth.currentUser;
