@@ -57,6 +57,18 @@ Ce dashboard centralise les calendriers de plusieurs sports (Football, Basket, H
 - **Dark Mode** 🌙 : Thème sombre automatique (selon système) ou manuel via un toggle, persistant au rechargement.
 - **Persistance des données** : Sauvegarde locale (`localStorage`) de la position GPS, du thème, des préférences d'affichage et des statuts favoris.
 
+### 📊 Statistiques & Analytics (Nouveau)
+- **Dashboard de Performance** : Vue d'ensemble de la saison avec calcul du taux de réussite et volumes (Demandes vs Validées).
+- **Graphique "Sunburst" (Double Donut)** : 
+  - Visualisation SVG générée dynamiquement côté client.
+  - **Cercle Intérieur** : Répartition par Sport.
+  - **Cercle Extérieur** : Détail par niveau de compétition (L1, N3, U19 Nat, etc.).
+- **Système d'Archivage (Snapshot)** : 
+  - **Problématique** : Le fichier `matchs.json` est reset chaque mois, supprimant l'historique des matchs passés.
+  - **Solution** : Lorsqu'un match passe en statut "Reçu", un **snapshot complet** (noms, date, sport, niveau) est copié dans une collection `archives` (Firestore + LocalStorage). Cela garantit la persistance des statistiques à vie, indépendamment du calendrier live.
+- **Algorithme de Scoring "Top Match"** : Détermine automatiquement le match le plus prestigieux couvert selon une pondération multicritère (Niveau > Sexe > Catégorie d'âge > Récence).
+- **Partage Social (Web Share API)** : Génération d'une image récapitulative via `html2canvas` et invocation du menu de partage natif du système (iOS/Android/Windows).
+
 ---
 
 ## 🛠️ Stack Technique
@@ -65,6 +77,8 @@ Ce dashboard centralise les calendriers de plusieurs sports (Football, Basket, H
   - HTML5, CSS3 (Flexbox/Grid, Variables CSS).
   - JavaScript Vanilla (ES6+).
   - **Leaflet.js** : Librairie open-source pour la carte interactive.
+  - **html2canvas** : Moteur de rendu de capture d'écran pour la génération des visuels de partage.
+  - **SVG Natif** : Génération procédurale des graphiques (Donut Charts) sans librairie lourde externe.
 - **Backend / Cloud (BaaS)** :
   - **Google Firebase Authentication** : Gestion des utilisateurs.
   - **Google Cloud Firestore** : Base de données NoSQL pour le stockage des profils et favoris.

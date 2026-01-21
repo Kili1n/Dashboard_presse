@@ -453,7 +453,7 @@
             
             <p>
                 Fini la chasse aux matchs, la recherche laborieuse de contacts et les oublis de relance. 
-                Visualisez les calendriers, calculez vos trajets et synchronisez vos demandes d'accréditations <strong>dans le Cloud</strong>. 
+                Visualisez les calendriers, calculez vos trajets, synchronisez vos demandes d'accréditations et <strong>analysez vos statistiques</strong> de la saison <strong>dans le Cloud</strong>. 
                 L'outil pro, collaboratif et <strong>100% gratuit</strong>.
             </p>
 
@@ -611,16 +611,17 @@
                     </div>
                 </div>
 
-                <div class="feature-card">
-                    <div class="icon-box"><i class="fa-solid fa-mobile-screen"></i></div>
-                    <h3>Expérience Utilisateur</h3>
+                <div class="feature-card card-highlight">
+                    <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Statistiques & Archives</h3>
                     <p>
-                        Mode Sombre reposant, sauvegarde de vos préférences (GPS, filtres) et affichage responsive (Mobile/PC). Une interface faite pour les pros.
+                        Analysez votre saison : Taux de réussite, clubs favoris et diversité (L1, U19, Nat).
+                        Vos matchs validés sont <strong>archivés à vie</strong>, même après leur disparition du calendrier.
                     </p>
                     <div class="tag-container">
-                        <span class="tag">🌙 Dark Mode</span>
-                        <span class="tag">💾 Sauvegarde auto</span>
-                        <span class="tag">📱 100% Responsive</span>
+                        <span class="tag">📊 Double Donut</span>
+                        <span class="tag">💾 Sauvegarde Cloud</span>
+                        <span class="tag">🏆 Records</span>
                     </div>
                 </div>
 
@@ -705,8 +706,46 @@
                         <p>Une interface sombre et compacte pour une lecture optimale de vos données sans fatigue visuelle.</p>
                     </div>
                 </div>
-
             </div>
+        </div>
+    </section>
+
+    <section class="share-feature" style="padding: 100px 0; background: linear-gradient(to bottom, #0a0a0a, #050505); border-bottom: 1px solid var(--border); overflow: hidden;">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+            
+            <div style="flex: 1; min-width: 300px;">
+                <span style="background: rgba(52, 199, 89, 0.15); color: #34C759; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 24px; border: 1px solid rgba(52, 199, 89, 0.3);">
+                    ✨ Dernière Nouveauté
+                </span>
+                <h2 style="font-size: 3rem; margin-bottom: 24px; line-height: 1.1; font-weight: 800;">
+                    Vos stats,<br>
+                    <span class="text-gradient">prêtes à partager.</span>
+                </h2>
+                <p style="color: var(--text-muted); font-size: 1.15rem; margin-bottom: 35px; line-height: 1.6; max-width: 500px;">
+                    Ne gardez pas votre réussite pour vous. Transformez instantanément votre année de photographe en un <strong>visuel impactant</strong> pour vos réseaux sociaux.
+                    <br><br>
+                    Votre bilan mensuel (Taux, Records, Diversité) mérite mieux qu'une simple capture d'écran.
+                </p>
+                <a href="app.html" class="btn btn-secondary" style="border-radius: 50px; padding: 14px 30px; border: 1px solid var(--border); background: rgba(255,255,255,0.05);">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: #34C759; margin-right: 10px;"></i> Générer ma carte
+                </a>
+            </div>
+
+            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: linear-gradient(135deg, #34C759, #0071E3); filter: blur(80px); opacity: 0.15; border-radius: 50%; pointer-events: none;"></div>
+                
+                <div style="transform: perspective(1000px) rotateY(-5deg) rotateX(2deg); transition: transform 0.3s ease;" onmouseover="this.style.transform='perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.02)'" onmouseout="this.style.transform='perspective(1000px) rotateY(-5deg) rotateX(2deg)'">
+                    <img src="data/screen_stats.png" alt="Exemple de partage réseaux sociaux" style="
+                        display: block;
+                        width: 100%;
+                        max-width: 480px;
+                        border-radius: 24px;
+                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                    ">
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -730,6 +769,13 @@
                     <div class="faq-question"><i class="fa-solid fa-circle-plus"></i> Un club ou un lien manque à l'appel ?</div>
                     <div class="faq-answer">
                         Le projet est <b>collaboratif</b>. Si vous possédez des liens d'accréditation ou constatez une absence, contactez-moi par email pour suggérer un ajout et en faire profiter toute la communauté.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fa-solid fa-box-archive"></i> Mes matchs disparaissent-ils à la fin du mois ?</div>
+                    <div class="faq-answer">
+                        Le calendrier "live" est reset chaque mois, <strong>MAIS</strong> vos matchs validés (favoris "Reçus") sont automatiquement <strong>archivés dans votre espace personnel</strong>. Vous gardez une trace indéfinie de votre saison dans vos statistiques.
                     </div>
                 </div>
             </div>

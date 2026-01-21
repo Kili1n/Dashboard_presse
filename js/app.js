@@ -1616,13 +1616,14 @@ function updateFilterSlider() {
 
             if (!matchData && matchArchives[matchId]) {
                 const archive = matchArchives[matchId];
-                // On reconstruit un objet "simulé" compatible avec la suite du code
+                
+                // On utilise ?. (optionnel) et || (ou) pour éviter le crash si une info manque
                 matchData = {
-                    sport: archive.sport,
-                    home: { name: archive.home.name },
-                    away: { name: archive.away.name },
-                    compFormatted: archive.compFormatted,
-                    dateObj: new Date(archive.dateObj) // On reconvertit la string en Date
+                    sport: archive.sport || 'autre',
+                    home: { name: archive.home?.name || "Club Inconnu" }, // Sécurité ici
+                    away: { name: archive.away?.name || "Club Inconnu" }, // Et ici
+                    compFormatted: archive.compFormatted || "AUTRE",
+                    dateObj: new Date(archive.dateObj || Date.now())
                 };
             }
             
@@ -1654,13 +1655,42 @@ function updateFilterSlider() {
                 const monthKey = `${d.getFullYear()}-${d.getMonth()}`;
                 monthsCount[monthKey] = (monthsCount[monthKey] || 0) + 1;
 
-                // D. Meilleur Match
+// D. Meilleur Match (Avec gestion de priorité : Homme > Femme > Jeune)
                 const lvl = parts[1] || "AUTRE";
-                const rank = LEVEL_RANK[lvl] || 0;
+                let rank = LEVEL_RANK[lvl] || 0; // Ex: L1 = 10
                 
+                // --- AJOUT DU SYSTEME DE BONUS ---
+                // On ajoute des décimales pour départager le même niveau
+                // Senior Homme (+0.5) > Senior Femme (+0.3) > Jeunes (+0.1)
+                
+                const cat = (parts[2] || "").toUpperCase(); // Ex: "SENIOR", "U21", "SENIOR F"
+                
+                if (cat === "SENIOR" || cat === "S" || cat === "") {
+                    // Priorité Max : Senior Homme (ou non spécifié)
+                    rank += 0.5;
+                } else if (cat.includes("F") || cat.includes("FEM")) {
+                    // Priorité 2 : Senior Femme
+                    rank += 0.3;
+                } else {
+                    // Priorité 3 : Jeunes (U21, U19, Espoirs...)
+                    rank += 0.1;
+                }
+                // ---------------------------------
+
                 if (rank > maxLevelVal) {
                     maxLevelVal = rank;
-                    bestMatchName = `${matchData.home.name} vs ${matchData.away.name} <span style="opacity:0.6; font-size:0.9em;">(${lvl})</span>`; 
+                    
+                    // Formatage propre du titre
+                    // Si c'est L1 Senior -> "L1"
+                    // Si c'est L1 U21 -> "L1 (U21)"
+                    let displayLvl = lvl;
+                    if (cat && cat !== "SENIOR" && cat !== "S") {
+                        // On nettoie un peu (ex: "SENIOR F" -> "F")
+                        const shortCat = cat.replace("SENIOR ", "").replace("ESPOIRS", "U21"); 
+                        displayLvl += ` ${shortCat}`;
+                    }
+
+                    bestMatchName = `${matchData.home.name} vs ${matchData.away.name} <span style="opacity:0.6; font-size:0.9em;">(${displayLvl})</span>`; 
                 }
             }
         });
@@ -1849,15 +1879,89 @@ function updateFilterSlider() {
     }
 
     // Listener Share (Copié Presse-papier) - Inchangé
+// --- LISTENER BOUTON PARTAGER (Web Share API) ---
     if (shareStatsBtn) {
-        shareStatsBtn.addEventListener('click', () => {
-             // ... Code de copie (inchangé)
-             const text = `Mes stats FokalPress...`; // Ton texte existant
-             navigator.clipboard.writeText(text).then(() => {
-                const original = shareStatsBtn.innerHTML;
-                shareStatsBtn.innerHTML = `<i class="fa-solid fa-check"></i> Copié !`;
-                setTimeout(() => shareStatsBtn.innerHTML = original, 2000);
-            });
+        shareStatsBtn.addEventListener('click', async () => {
+            // 1. Préparation (Comme pour Enregistrer)
+            const card = document.querySelector('#statsModal .login-card');
+            const closeBtn = document.getElementById('closeStatsBtn');
+            const btnsWrapper = document.getElementById('statsButtonsWrapper');
+            const buttonsRow = btnsWrapper.querySelector('div[style*="display: flex"]');
+
+            // Masquage UI
+            closeBtn.style.display = 'none';
+            if(buttonsRow) buttonsRow.style.display = 'none';
+
+            // Feedback visuel
+            const originalBtnText = shareStatsBtn.innerHTML;
+            shareStatsBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i>';
+
+            // --- FIX COULEURS (Mode Sombre/Clair) ---
+            const originalCardBg = card.style.background;
+            const originalCardColor = card.style.color;
+            const computedStyle = getComputedStyle(card);
+            const computedBgColor = computedStyle.backgroundColor;
+            const computedTextColor = computedStyle.color;
+
+            card.style.backgroundColor = computedBgColor;
+            card.style.color = computedTextColor;
+            const headerDiv = card.querySelector('div[style*="linear-gradient"]');
+            if(headerDiv) headerDiv.style.color = 'white';
+
+            try {
+                // 2. Génération de l'image
+                const canvas = await html2canvas(card, {
+                    scale: 3,
+                    backgroundColor: computedBgColor,
+                    useCORS: true
+                });
+
+                // 3. Conversion en Fichier (Blob)
+                canvas.toBlob(async (blob) => {
+                    if (!blob) throw new Error("Erreur génération blob");
+
+                    const file = new File([blob], "FokalPress_Stats.png", { type: "image/png" });
+
+                    // 4. Déclenchement du Partage Natif
+                    if (navigator.share && navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            title: 'Mes Stats FokalPress',
+                            text: 'Regarde ma saison sur FokalPress !',
+                            files: [file]
+                        });
+                    } else {
+                        // Fallback PC (Si le partage natif n'existe pas)
+                        // On copie l'image dans le presse-papier
+                        try {
+                            const item = new ClipboardItem({ "image/png": blob });
+                            await navigator.clipboard.write([item]);
+                            alert("Image copiée dans le presse-papier !");
+                        } catch (err) {
+                            alert("Partage non supporté sur cet appareil.");
+                        }
+                    }
+
+                    // 5. Restauration (Dans le callback du blob)
+                    closeBtn.style.display = 'flex';
+                    if(buttonsRow) buttonsRow.style.display = 'flex';
+                    shareStatsBtn.innerHTML = originalBtnText;
+                    card.style.backgroundColor = originalCardBg;
+                    card.style.color = originalCardColor;
+                    if(headerDiv) headerDiv.style.color = '';
+
+                }, 'image/png');
+
+            } catch (err) {
+                console.error("Erreur partage :", err);
+                alert("Impossible de partager l'image.");
+                
+                // Restauration en cas d'erreur
+                closeBtn.style.display = 'flex';
+                if(buttonsRow) buttonsRow.style.display = 'flex';
+                shareStatsBtn.innerHTML = originalBtnText;
+                card.style.backgroundColor = originalCardBg;
+                card.style.color = originalCardColor;
+            }
         });
     }
 
