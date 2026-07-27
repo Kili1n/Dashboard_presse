@@ -451,11 +451,14 @@
             fileContent += `// Mis à jour via l'interface Admin le ${new Date().toLocaleDateString('fr-FR')}\n\n`;
             fileContent += `const CUSTOM_LOGOS = {\n`;
             
-            Object.keys(workingLogos).sort().forEach(key => {
-                if (workingLogos[key]) {
-                    fileContent += `    "${key.toUpperCase()}": "${workingLogos[key]}",\n`;
-                }
-            });
+            // Tri par ordre alphabétique inversé
+            Object.keys(workingLogos)
+                .sort((a, b) => b.localeCompare(a))
+                .forEach(key => {
+                    if (workingLogos[key]) {
+                        fileContent += `    "${key.toUpperCase()}": "${workingLogos[key]}",\n`;
+                    }
+                });
 
             fileContent += `};\n`;
             return fileContent;
