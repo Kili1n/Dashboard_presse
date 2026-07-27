@@ -284,15 +284,13 @@
         let workingLogos = { ...CUSTOM_LOGOS };
         let allDetectedClubs = new Set();
 
-        // Fonction de secours améliorée pour intercepter les liens morts
+        // Fonction de secours pour intercepter les liens morts
         function handleLogoError(imgElement) {
             imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2386868B'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V6.75zm.375 0a.375 0 11-.75 0 .375.375 0 01.75 0z' /></svg>";
             
             const card = imgElement.closest('.club-card');
             if (card) {
                 card.classList.add('is-broken');
-                
-                // Injection du badge "Lien cassé" si pas déjà présent
                 if (!card.querySelector('.broken-badge')) {
                     const nameContainer = card.querySelector('.club-name');
                     const badge = document.createElement('span');
@@ -301,37 +299,18 @@
                     nameContainer.appendChild(badge);
                 }
             }
-            
-            // On recalcule les filtres pour mettre à jour les compteurs et l'affichage dynamique
             applyFilters();
         }
 
         // Chargement initial des données
         async function loadAdminData() {
-        // 1. ÉTAPE SÉCURITÉ : On s'assure que workingLogos contient TOUS les logos existants de config.js
-        if (typeof CUSTOM_LOGOS !== 'undefined') {
-            workingLogos = { ...CUSTOM_LOGOS };
-            // On ajoute toutes ces clés historiques dans notre Set de clubs à afficher
-            Object.keys(CUSTOM_LOGOS).forEach(club => allDetectedClubs.add(club.toUpperCase()));
-        }
+            // 1. ÉTAPE SÉCURITÉ : Charger la configuration de config.js
+            if (typeof CUSTOM_LOGOS !== 'undefined') {
+                workingLogos = { ...CUSTOM_LOGOS };
+                Object.keys(CUSTOM_LOGOS).forEach(club => allDetectedClubs.add(club.toUpperCase()));
+            }
 
-        // 2. ÉTAPE AJOUT : On va chercher matchs.json pour ajouter les NOUVEAUX clubs du week-end
-        try {
-            const response = await fetch('data/matchs.json');
-            const matchsData = await response.json();
-            
-            matchsData.forEach(m => {
-                if (m.home) allDetectedClubs.add(m.home.trim().toUpperCase());
-                if (m.away) allDetectedClubs.add(m.away.trim().toUpperCase());
-            });
-            console.log(`✅ Base de données synchronisée : ${allDetectedClubs.size} clubs au total.`);
-        } catch (error) {
-            console.warn("⚠️ Impossible de lire matchs.json. Utilisation des clubs de config.js uniquement.", error);
-        }
-
-        // 3. On construit les cartes HTML pour tout le monde
-        buildAllCards();
-    }
+            // 2. ÉTAPE AJOUT : Charger les clubs de matchs.json
             try {
                 const response = await fetch('data/matchs.json');
                 const matchsData = await response.json();
@@ -340,13 +319,12 @@
                     if (m.home) allDetectedClubs.add(m.home.trim().toUpperCase());
                     if (m.away) allDetectedClubs.add(m.away.trim().toUpperCase());
                 });
-                console.log(`✅ ${allDetectedClubs.size} clubs chargés.`);
+                console.log(`✅ Base de données synchronisée : ${allDetectedClubs.size} clubs au total.`);
             } catch (error) {
-                console.warn("⚠️ Utilisation du cache de secours config.js", error);
-                Object.keys(CUSTOM_LOGOS).forEach(club => allDetectedClubs.add(club.toUpperCase()));
+                console.warn("⚠️ Impossible de lire matchs.json. Utilisation des clubs de config.js uniquement.", error);
             }
 
-            // Génère l'ensemble des cartes une seule fois
+            // 3. Construction des cartes
             buildAllCards();
         }
 
@@ -369,14 +347,14 @@
                     <div class="club-info">
                         <div class="club-name" title="${clubName}">${clubName}</div>
                         <input type="text" value="${currentUrl}" placeholder="Coller le lien du logo..." 
-                               data-club="${clubName}" class="admin-input logo-input" style="width: 100%; box-sizing: border-box;">
+                            data-club="${clubName}" class="admin-input logo-input" style="width: 100%; box-sizing: border-box;">
                     </div>
                 `;
 
                 container.appendChild(card);
             });
 
-            // Écouteur sur les champs de saisie pour effacer le statut cassé si modification
+            // Écouteur sur les champs de saisie
             document.querySelectorAll('.logo-input').forEach(input => {
                 input.addEventListener('input', (e) => {
                     const club = e.target.dataset.club;
@@ -391,7 +369,6 @@
 
                     const img = card.querySelector('.logo-preview');
                     if (img) {
-                        // Reset de l'état cassé car une nouvelle URL est testée
                         card.classList.remove('is-broken');
                         card.querySelector('.broken-badge')?.remove();
                         img.src = url || '';
@@ -400,11 +377,10 @@
                 });
             });
 
-            // Lancement du premier filtrage visuel
             applyFilters();
         }
 
-        // Application des filtres de recherche et de sélection de catégorie (Masquage CSS)
+        // Filtrage dynamique
         function applyFilters() {
             const searchQuery = document.getElementById('searchBar').value.toLowerCase();
             const filterType = document.getElementById('filterType').value;
@@ -420,7 +396,6 @@
                 let matchesFilter = true;
 
                 if (filterType === 'missing') {
-                    // Logique étendue : Manquant SI champ vide OU image cassée détectée
                     matchesFilter = (inputVal === '' || isBroken);
                 }
 
@@ -435,7 +410,7 @@
             document.getElementById('counterStats').textContent = displayedCount;
         }
 
-        // Génération de la chaîne de texte propre pour config.js
+        // Génération de la configuration
         function generateConfigString() {
             let fileContent = `// --- CONFIGURATION DE FOKAL-PRESS ---\n`;
             fileContent += `// Mis à jour via l'interface Admin le ${new Date().toLocaleDateString('fr-FR')}\n\n`;
@@ -451,7 +426,7 @@
             return fileContent;
         }
 
-        // Actions Presse-papier & Téléchargement
+        // Gestionnaires d'événements
         document.getElementById('btnClipboard').addEventListener('click', () => {
             navigator.clipboard.writeText(generateConfigString()).then(() => {
                 const btn = document.getElementById('btnClipboard');
