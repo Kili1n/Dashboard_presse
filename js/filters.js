@@ -78,7 +78,7 @@ function applyFilters() {
             return (a.distance || 9999) - (b.distance || 9999);
         }
         if (currentFilters.sortBy === "level") {
-            const priority = { "L1": 1, "L2": 2, "N1": 3, "N2": 4, "N3": 5, "NAT": 6, "COUPE": 7, "REG": 8, "AMICAL": 9 };
+            const priority = { "L1": 1, "L2": 2, "L3": 3, "N1": 4, "N2": 5, "N3": 6, "NAT": 7, "COUPE": 8, "REG": 9, "AMICAL": 10 };
             const getLevel = (comp) => comp.split(' - ')[1] || "REG";
             return (priority[getLevel(a.compFormatted)] || 99) - (priority[getLevel(b.compFormatted)] || 99);
         }
@@ -129,7 +129,7 @@ function populateCompFilter(filteredMatches) {
     const seen = new Set();
     
     filteredMatches.forEach(m => {
-        const groupName = getCompFilterGroup(m.compFormatted);
+        const groupName = getCompFilterGroup(m.compFormatted || m.competition);
         if (!seen.has(groupName)) {
             seen.add(groupName);
             uniqueComps.push({ name: groupName, sport: m.sport.toLowerCase() });

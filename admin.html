@@ -229,6 +229,27 @@
             display: inline-block;
             vertical-align: middle;
         }
+
+        /* Bouton Recherche Google pour Logo Cassé */
+        .btn-search-google {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #0071e3;
+            background: rgba(0, 113, 227, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-left: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-search-google:hover {
+            background: #0071e3;
+            color: #FFFFFF;
+        }
     </style>
 </head>
 <body>
@@ -291,12 +312,26 @@
             const card = imgElement.closest('.club-card');
             if (card) {
                 card.classList.add('is-broken');
-                if (!card.querySelector('.broken-badge')) {
+                
+                // Si le badge n'existe pas encore, on l'ajoute avec le bouton Google
+                if (!card.querySelector('.broken-container')) {
                     const nameContainer = card.querySelector('.club-name');
-                    const badge = document.createElement('span');
-                    badge.className = 'broken-badge';
-                    badge.innerText = 'Lien cassé';
-                    nameContainer.appendChild(badge);
+                    const input = card.querySelector('.logo-input');
+                    const clubName = input ? input.dataset.club : '';
+
+                    // Génération dynamique de l'URL Google Images
+                    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(clubName + ' logo png')}&udm=2`;
+
+                    const brokenContainer = document.createElement('span');
+                    brokenContainer.className = 'broken-container';
+                    brokenContainer.innerHTML = `
+                        <span class="broken-badge">Lien cassé</span>
+                        <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="btn-search-google" title="Rechercher sur Google Images">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Google
+                        </a>
+                    `;
+
+                    nameContainer.appendChild(brokenContainer);
                 }
             }
             applyFilters();
