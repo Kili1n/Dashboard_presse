@@ -319,7 +319,8 @@ const formatCompetition = (rawName, sport) => {
     else if (name.includes("SECONDE LIGUE")) { level = "L2"; age = "SENIOR F"; } 
     else if (name.includes("LF2")) { level = "L2"; age = "SENIOR F"; }
 
-    // --- NIVEAU N1 ---
+    // --- NIVEAU L3 / N1 ---
+    else if (name.includes("LIGUE 3") || name.includes(" L3 ")) { level = "L3"; }
     else if (name.includes("NF1")) { level = "N1"; age = "SENIOR F"; }
     else if (name.includes("ESPOIRS")) { level = "L1"; age = "U21"; }
     else if (name.includes("NM1")) { level = "N1"; }
@@ -334,6 +335,7 @@ const formatCompetition = (rawName, sport) => {
         
         if (name.includes("N3")) level = "N3";
         else if (name.includes("N2")) level = "N2";
+        else if (name.includes("N1")) level = "N1";
         else if (name.includes("D3") && (name.includes("FÉMININE") || name.includes("FEMININE"))) level = "L3";
         else if (name.includes("NATIONAL - SENIOR")) level = "N1";
         else if (name.includes("NATIONAL") || name.includes("NAT")) level = "NAT";

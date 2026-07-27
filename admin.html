@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fokal-Press — Admin Logos</title>
+    
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Ajustements spécifiques à l'interface admin basés sur tes variables */
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            opacity: 1; /* On force l'affichage ici */
+            display: flex;
+            flex-direction: column;
+            min-width: auto;
+            min-height: 100vh;
+            padding-bottom: 120px;
+        }
+
+        .admin-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 24px;
+        }
+
+        .admin-container {
+            max-w: 1100px;
+            width: 100%;
+            margin: 32px auto 0 auto;
+            padding: 0 24px;
+            box-sizing: border-box;
+        }
+
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-wrapper i {
+            position: absolute;
+            left: 12px;
+            color: var(--text-secondary);
+        }
+
+        .admin-input, .admin-select {
+            font-family: var(--font-main);
+            background-color: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .admin-input:focus, .admin-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+        }
+
+        .search-input {
+            padding-left: 36px;
+            width: 260px;
+        }
+
+        /* Grille des cartes clubs */
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .logos-grid { grid-template-columns: 1fr; }
+        }
+
+        .club-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .club-card:hover {
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-preview-wrapper {
+            width: 56px;
+            height: 56px;
+            background-color: var(--tag-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .logo-preview-wrapper img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .club-info {
+            flex-1: 1;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .club-name {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Barre basse de sauvegarde (Style d'origine préservé et adapté) */
+        .admin-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
+            padding: 16px 24px;
+            z-index: 100;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-admin {
+            font-family: var(--font-main);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover { background: rgba(0, 0, 0, 0.1); }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover { background: #0077ed; }
+        .btn-admin:active { transform: scale(0.98); }
+
+        /* Masquage propre qui permet quand même au navigateur de tester les images en tâche de fond */
+        .club-card.is-filtered-out {
+            position: absolute;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            border: none;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Badge Alerte Lien Cassé (Style Apple Red) */
+        .broken-badge {
+            font-size: 10px;
+            color: #FF3B30;
+            background: rgba(255, 59, 48, 0.12);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <div class="controls-row" style="max-w: 1100px; margin: 0 auto; width: 100%;">
+            <div>
+                <h1 style="font-size: 18px; font-weight: 700; tracking-tight: -0.5px; margin: 0;">📸 Configuration des Logos</h1>
+                <p style="font-size: 12px; color: var(--text-secondary); margin: 2px 0 0 0;">Dictionnaire d'URLs de substitution pour Fokal-Press</p>
+            </div>
+            
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchBar" placeholder="Rechercher un club..." class="admin-input search-input">
+                </div>
+                <select id="filterType" class="admin-select">
+                    <option value="missing">Logos manquants</option>
+                    <option value="all">Tous les clubs</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <div id="logosContainer" class="logos-grid">
+            </div>
+    </main>
+
+    <footer class="admin-footer">
+        <div class="footer-content">
+            <div style="font-size: 13px; color: var(--text-secondary);">
+                Clubs affichés : <span id="counterStats" style="font-weight: 600; color: var(--text-primary);">0</span>
+            </div>
+            <div class="btn-group">
+                <button id="btnClipboard" class="btn-admin btn-secondary">
+                    <i class="fa-regular fa-copy"></i> Copier la config
+                </button>
+                <button id="btnSave" class="btn-admin btn-primary">
+                    <i class="fa-solid fa-file-arrow-down"></i> Télécharger config.js
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/matches.js"></script>
+
+    <script>
+        // Sécurités globales
+        if (typeof CUSTOM_LOGOS === 'undefined') window.CUSTOM_LOGOS = {};
+
+        let workingLogos = { ...CUSTOM_LOGOS };
+        let allDetectedClubs = new Set();
+
+        // Fonction de secours améliorée pour intercepter les liens morts
+        function handleLogoError(imgElement) {
+            imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2386868B'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V6.75zm.375 0a.375 0 11-.75 0 .375.375 0 01.75 0z' /></svg>";
+            
+            const card = imgElement.closest('.club-card');
+            if (card) {
+                card.classList.add('is-broken');
+                
+                // Injection du badge "Lien cassé" si pas déjà présent
+                if (!card.querySelector('.broken-badge')) {
+                    const nameContainer = card.querySelector('.club-name');
+                    const badge = document.createElement('span');
+                    badge.className = 'broken-badge';
+                    badge.innerText = 'Lien cassé';
+                    nameContainer.appendChild(badge);
+                }
+            }
+            
+            // On recalcule les filtres pour mettre à jour les compteurs et l'affichage dynamique
+            applyFilters();
+        }
+
+        // Chargement initial des données
+        async function loadAdminData() {
+        // 1. ÉTAPE SÉCURITÉ : On s'assure que workingLogos contient TOUS les logos existants de config.js
+        if (typeof CUSTOM_LOGOS !== 'undefined') {
+            workingLogos = { ...CUSTOM_LOGOS };
+            // On ajoute toutes ces clés historiques dans notre Set de clubs à afficher
+            Object.keys(CUSTOM_LOGOS).forEach(club => allDetectedClubs.add(club.toUpperCase()));
+        }
+
+        // 2. ÉTAPE AJOUT : On va chercher matchs.json pour ajouter les NOUVEAUX clubs du week-end
+        try {
+            const response = await fetch('data/matchs.json');
+            const matchsData = await response.json();
+            
+            matchsData.forEach(m => {
+                if (m.home) allDetectedClubs.add(m.home.trim().toUpperCase());
+                if (m.away) allDetectedClubs.add(m.away.trim().toUpperCase());
+            });
+            console.log(`✅ Base de données synchronisée : ${allDetectedClubs.size} clubs au total.`);
+        } catch (error) {
+            console.warn("⚠️ Impossible de lire matchs.json. Utilisation des clubs de config.js uniquement.", error);
+        }
+
+        // 3. On construit les cartes HTML pour tout le monde
+        buildAllCards();
+    }
+            try {
+                const response = await fetch('data/matchs.json');
+                const matchsData = await response.json();
+                
+                matchsData.forEach(m => {
+                    if (m.home) allDetectedClubs.add(m.home.trim().toUpperCase());
+                    if (m.away) allDetectedClubs.add(m.away.trim().toUpperCase());
+                });
+                console.log(`✅ ${allDetectedClubs.size} clubs chargés.`);
+            } catch (error) {
+                console.warn("⚠️ Utilisation du cache de secours config.js", error);
+                Object.keys(CUSTOM_LOGOS).forEach(club => allDetectedClubs.add(club.toUpperCase()));
+            }
+
+            // Génère l'ensemble des cartes une seule fois
+            buildAllCards();
+        }
+
+        // Construction initiale de tout le DOM des clubs
+        function buildAllCards() {
+            const container = document.getElementById('logosContainer');
+            container.innerHTML = '';
+
+            Array.from(allDetectedClubs).sort().forEach(clubName => {
+                const existingKey = Object.keys(workingLogos).find(key => clubName.includes(key.toUpperCase()));
+                const currentUrl = existingKey ? workingLogos[existingKey] : '';
+
+                const card = document.createElement('div');
+                card.className = "club-card";
+                
+                card.innerHTML = `
+                    <div class="logo-preview-wrapper">
+                        <img src="${currentUrl || ''}" alt="" class="logo-preview" onerror="handleLogoError(this)">
+                    </div>
+                    <div class="club-info">
+                        <div class="club-name" title="${clubName}">${clubName}</div>
+                        <input type="text" value="${currentUrl}" placeholder="Coller le lien du logo..." 
+                               data-club="${clubName}" class="admin-input logo-input" style="width: 100%; box-sizing: border-box;">
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            // Écouteur sur les champs de saisie pour effacer le statut cassé si modification
+            document.querySelectorAll('.logo-input').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const club = e.target.dataset.club;
+                    const url = e.target.value.trim();
+                    const card = e.target.closest('.club-card');
+                    
+                    if (url) {
+                        workingLogos[club] = url;
+                    } else {
+                        delete workingLogos[club];
+                    }
+
+                    const img = card.querySelector('.logo-preview');
+                    if (img) {
+                        // Reset de l'état cassé car une nouvelle URL est testée
+                        card.classList.remove('is-broken');
+                        card.querySelector('.broken-badge')?.remove();
+                        img.src = url || '';
+                    }
+                    applyFilters();
+                });
+            });
+
+            // Lancement du premier filtrage visuel
+            applyFilters();
+        }
+
+        // Application des filtres de recherche et de sélection de catégorie (Masquage CSS)
+        function applyFilters() {
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+            const filterType = document.getElementById('filterType').value;
+            const cards = document.querySelectorAll('.club-card');
+            let displayedCount = 0;
+
+            cards.forEach(card => {
+                const clubName = card.querySelector('.club-name').innerText.toLowerCase();
+                const inputVal = card.querySelector('.logo-input').value.trim();
+                const isBroken = card.classList.contains('is-broken');
+
+                const matchesSearch = !searchQuery || clubName.includes(searchQuery);
+                let matchesFilter = true;
+
+                if (filterType === 'missing') {
+                    // Logique étendue : Manquant SI champ vide OU image cassée détectée
+                    matchesFilter = (inputVal === '' || isBroken);
+                }
+
+                if (matchesSearch && matchesFilter) {
+                    card.classList.remove('is-filtered-out');
+                    displayedCount++;
+                } else {
+                    card.classList.add('is-filtered-out');
+                }
+            });
+
+            document.getElementById('counterStats').textContent = displayedCount;
+        }
+
+        // Génération de la chaîne de texte propre pour config.js
+        function generateConfigString() {
+            let fileContent = `// --- CONFIGURATION DE FOKAL-PRESS ---\n`;
+            fileContent += `// Mis à jour via l'interface Admin le ${new Date().toLocaleDateString('fr-FR')}\n\n`;
+            fileContent += `const CUSTOM_LOGOS = {\n`;
+            
+            Object.keys(workingLogos).sort().forEach(key => {
+                if (workingLogos[key]) {
+                    fileContent += `    "${key.toUpperCase()}": "${workingLogos[key]}",\n`;
+                }
+            });
+
+            fileContent += `};\n`;
+            return fileContent;
+        }
+
+        // Actions Presse-papier & Téléchargement
+        document.getElementById('btnClipboard').addEventListener('click', () => {
+            navigator.clipboard.writeText(generateConfigString()).then(() => {
+                const btn = document.getElementById('btnClipboard');
+                const prev = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check" style="color: #34C759;"></i> Copié !`;
+                setTimeout(() => btn.innerHTML = prev, 2000);
+            });
+        });
+
+        document.getElementById('btnSave').addEventListener('click', () => {
+            const blob = new Blob([generateConfigString()], { type: 'text/javascript;charset=utf-8;' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "config.js";
+            link.click();
+        });
+
+        document.getElementById('searchBar').addEventListener('input', applyFilters);
+        document.getElementById('filterType').addEventListener('change', applyFilters);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAdminData();
+        });
+    </script>
+</body>
+</html>

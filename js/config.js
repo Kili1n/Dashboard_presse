@@ -112,7 +112,7 @@ const CUSTOM_LOGOS = {
     "CAEN BASKET CALVADOS" : "https://upload.wikimedia.org/wikipedia/fr/3/3f/Caen_Basket_Calvados_%28logo%29.png",
     "HAVRE CAUCRIAUV S" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJvNlMGQob0pWReScynGyzVA5kqyger5d4lw&s",
     "SM CAEN" : "https://upload.wikimedia.org/wikipedia/fr/7/79/Logo_SM_Caen_2016.svg", 
-    "CAEN" : "https://www.lnh.fr/medias/sports_teams/caen__logo__2024-2025.png", 
+    "CAEN" : "https://www.lnh.fr/medias/sports_teams/caen__logo__2024-2025.png",
     "AJACCIO" : "https://upload.wikimedia.org/wikipedia/fr/7/73/Logo_Gaz%C3%A9lec_Football_Club_Ajaccio_2012.svg",
     "QUEVILLY" : "https://upload.wikimedia.org/wikipedia/fr/c/c3/Logo_US_Quevilly_Rouen_2018.svg",
     "PAYS DE CASSEL" : "https://upload.wikimedia.org/wikipedia/fr/thumb/a/af/Logo_US_Pays_de_Cassel_-_2018.svg/1280px-Logo_US_Pays_de_Cassel_-_2018.svg.png",
