@@ -320,7 +320,7 @@ const formatCompetition = (rawName, sport) => {
     else if (name.includes("LF2")) { level = "L2"; age = "SENIOR F"; }
 
     // --- NIVEAU L3 / N1 ---
-    else if (name.includes("LIGUE 3") || name.includes(" L3 ")) { level = "L3"; }
+    else if (name.includes("LIGUE 3") || name.includes(" L3 ") || name.startsWith("L3") || name.includes("L3-") || name.includes("L3 -")) { level = "L3"; }
     else if (name.includes("NF1")) { level = "N1"; age = "SENIOR F"; }
     else if (name.includes("ESPOIRS")) { level = "L1"; age = "U21"; }
     else if (name.includes("NM1")) { level = "N1"; }
