@@ -132,11 +132,28 @@ const normalize = (str) => {
 
 function parseFFFDate(dateStr) {
     if (!dateStr) return null;
-    const monthsMap = { jan: 0, fév: 1, mar: 2, avr: 3, mai: 4, jui: 5, jul: 6, aoû: 7, sep: 8, oct: 9, nov: 10, déc: 11 };
+    const monthsMap = { 
+        'jan': 0, 'janv': 0,
+        'fév': 1, 'fev': 1, 'févr': 1,
+        'mar': 2, 'mars': 2,
+        'avr': 3, 'avril': 3,
+        'mai': 4,
+        'juin': 5, 'jun': 5,
+        'jui': 6, 'juil': 6, 'juillet': 6,
+        'aoû': 7, 'aou': 7, 'août': 7,
+        'sep': 8, 'sept': 8,
+        'oct': 9,
+        'nov': 10,
+        'déc': 11, 'dec': 11
+    };
     const parts = dateStr.toLowerCase().split(' ');
     if (parts.length < 4) return null;
     const day = parseInt(parts[1]);
-    const month = monthsMap[parts[2].replace('.', '')];
+    const monthStr = parts[2].replace('.', '').trim();
+    const month = monthsMap[monthStr];
+    
+    if (month === undefined) return null; // Sécurité si le mois n'est pas reconnu
+    
     const year = parseInt(parts[3]);
     const time = parts[5] ? parts[5].split('h') : [0, 0];
     return new Date(year, month, day, parseInt(time[0] || 0), parseInt(time[1] || 0));
@@ -211,19 +228,26 @@ async function scrapeFootball(page) {
             await new Promise(r => setTimeout(r, 1000));
 
             // 3. Identification automatique du club
-            const targetTeam = await page.evaluate(() => {
+           // 3. Identification automatique infaillible du club (par fréquence)
+            let targetTeam = await page.evaluate(() => {
                 const blocks = Array.from(document.querySelectorAll('app-match-score'));
-                if (blocks.length < 2) return null;
-                const getTeams = (b) => [
-                    b.querySelector('.recevant .equipe-name')?.innerText.trim(),
-                    b.querySelector('.visiteur .equipe-name')?.innerText.trim()
-                ];
-                const m1 = getTeams(blocks[0]);
-                const m2 = getTeams(blocks[1]);
-                return m1.find(t => t && m2.includes(t));
+                if (blocks.length === 0) return null;
+                
+                const counts = {};
+                blocks.forEach(b => {
+                    const home = b.querySelector('.recevant .equipe-name')?.innerText.trim();
+                    const away = b.querySelector('.visiteur .equipe-name')?.innerText.trim();
+                    if (home) counts[home] = (counts[home] || 0) + 1;
+                    if (away) counts[away] = (counts[away] || 0) + 1;
+                });
+
+                // Retourne l'équipe qui apparaît le plus souvent sur la page
+                return Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b, null);
             });
 
-            if (!targetTeam) continue;
+            if (!targetTeam) {
+                targetTeam = teamConfig.name; 
+            }
 
             const targetNorm = normalize(targetTeam);
 
@@ -252,9 +276,13 @@ async function scrapeFootball(page) {
                 });
             });
 
-            const filteredCount = data.filter(m => {
+            let debugReasons = [];
+            let filteredCount = 0;
+
+            data.forEach((m, index) => {
                 const matchDate = parseFFFDate(m.dateRaw);
-                const isHome = normalize(m.home) === targetNorm;
+                const homeNorm = normalize(m.home);
+                const isHome = homeNorm === targetNorm;
                 const isWithinRange = matchDate && matchDate >= now && matchDate <= limitDate;
 
                 if (isHome && isWithinRange && !futureMatchesMap.has(m.id)) {
@@ -270,13 +298,32 @@ async function scrapeFootball(page) {
                         location: "N/A",
                         timestamp: matchDate.getTime()
                     });
-                    return true;
+                    filteredCount++;
+                } else {
+                    // Collecte des raisons du rejet pour ce match
+                    let reasons = [];
+                    if (!isHome) reasons.push(`Pas à domicile (Lu: "${m.home}" [norm: ${homeNorm}] ≠ Cible: "${targetTeam}" [norm: ${targetNorm}])`);
+                    if (!matchDate) reasons.push(`Date invalide ("${m.dateRaw}")`);
+                    else if (!isWithinRange) reasons.push(`Date hors limite (${matchDate.toLocaleDateString()} n'est pas entre aujourd'hui et +2 mois)`);
+                    if (futureMatchesMap.has(m.id)) reasons.push(`Doublon (ID déjà présent)`);
+                    
+                    debugReasons.push(`Match #${index + 1} (${m.home} vs ${m.away}) -> REJETÉ : ${reasons.join(' | ')}`);
                 }
-                return false;
-            }).length;
+            });
 
-            // 5. Print identique au mode Basketball
-            console.log(`✅ ${teamConfig.name} : ${filteredCount} matchs trouvés.`);
+            // 6. Affichage classique ou affichage DEBUG si 0 match
+            if (filteredCount === 0) {
+                console.log(`❌ ${teamConfig.name} : 0 match trouvé !`);
+                console.log(`   🔍 --- RAPPORT DE DÉBUG (${data.length} matchs analysés sur la page) ---`);
+                if (data.length === 0) {
+                    console.log(`   👉 Aucun bloc 'app-match-score' trouvé dans le DOM.`);
+                } else {
+                    debugReasons.forEach(reason => console.log(`   👉 ${reason}`));
+                }
+                console.log(`   ------------------------------------------------------------------`);
+            } else {
+                console.log(`✅ ${teamConfig.name} : ${filteredCount} matchs trouvés.`);
+            }
 
         } catch (error) {
             console.error(`❌ Erreur Football sur ${teamConfig.url} :`, error.message);
