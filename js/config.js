@@ -170,7 +170,6 @@ const CUSTOM_LOGOS = {
     "ESCAUDAIN" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2kTm_by0tvVVnliDU99BFlnYnaj2CfvWliA&s",
     "VICHY" : "https://upload.wikimedia.org/wikipedia/fr/thumb/f/f2/Logo_JA_Vichy_Basket_-_2023.svg/1200px-Logo_JA_Vichy_Basket_-_2023.svg.png",
     "CHAMBRAY": "https://upload.wikimedia.org/wikipedia/fr/thumb/b/bd/Chambray_Touraine_Handball_logo_2018.svg/3840px-Chambray_Touraine_Handball_logo_2018.svg.png",
-    "BESANCON": "https://upload.wikimedia.org/wikipedia/fr/thumb/f/fc/ESBF_2019.png/1200px-ESBF_2019.png",
     "SAINT-MAUR": "https://upload.wikimedia.org/wikipedia/fr/e/e7/Stella_Saint-Maur_Handball_Logo.png",
     "TOULON": "https://upload.wikimedia.org/wikipedia/fr/b/b1/Logo_du_Toulon_M%C3%A9tropole_Var_Handball.png",
     "ST AMAND": "https://upload.wikimedia.org/wikipedia/fr/9/90/Saint-Amand_Handball_Logo.png",
@@ -349,7 +348,10 @@ const CUSTOM_LOGOS = {
     "STADE BRESTOIS" : "https://upload.wikimedia.org/wikipedia/fr/1/14/Logo_Stade_Brestois.svg",
     "MULHOUSE" : "https://wp.bebasket.fr/images/2025/07/520599397_122250897662088869_7752803969749140152_n.jpg",
     "CHERBOURG JS" : "https://upload.wikimedia.org/wikipedia/commons/e/e5/Logo_JSCherbourg.png",
-    "CHOLET" : "https://upload.wikimedia.org/wikipedia/fr/thumb/a/aa/Logo_Cholet_Basket_2019.svg/500px-Logo_Cholet_Basket_2019.svg.png"
+    "CHOLET" : "https://upload.wikimedia.org/wikipedia/fr/thumb/a/aa/Logo_Cholet_Basket_2019.svg/500px-Logo_Cholet_Basket_2019.svg.png",
+    "GRAND BESANCON" : "https://upload.wikimedia.org/wikipedia/fr/5/55/Grand_Besan%C3%A7on_Doubs_handball.svg",
+    "ES BESANCON" : "https://upload.wikimedia.org/wikipedia/fr/f/fc/ESBF_2019.png"
+
 };  
 
 const STADIUM_COORDS = {
