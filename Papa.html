@@ -11,30 +11,29 @@
            VARIABLES CSS - ÉVOLUTION DYNAMIQUE DU THÈME
            ======================================================== */
         :root {
-            /* Thème Initial : Sombre, mystérieux, or/argent */
             --bg-color: #1a1a1d;
             --surface-color: #26262b;
             --text-main: #e0e0e0;
             --text-muted: #888888;
-            --accent-color: #d4af37; /* Doré */
+            --accent-color: #d4af37; /* Doré / Neutre */
             --accent-hover: #b5952f;
             --border-radius: 12px;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             --transition-speed: 1.5s;
         }
 
-        /* Thème Étape 1 : Infiltration subtile du rouge */
+        /* Thème Étape 1 & 2 : Infiltration subtile du rouge */
         body.theme-step1 {
             --accent-color: #a32c32; /* Rouge sombre */
             --accent-hover: #801f24;
             --bg-color: #161213;
         }
 
-        /* Thème Étape 2 : Rouge et Noir s'installent (US Ivry) */
+        /* Thème Étape 3 (après Mario) : Rouge et Noir US Ivry */
         body.theme-step2 {
-            --bg-color: #111111; /* Noir Ivry */
+            --bg-color: #111111;
             --surface-color: #1c1c1c;
-            --accent-color: #E30613; /* Rouge US Ivry */
+            --accent-color: #E30613; /* Rouge pétant Ivry */
             --accent-hover: #b30510;
             --text-main: #ffffff;
         }
@@ -58,7 +57,7 @@
             align-items: center;
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
             overflow-x: hidden;
-            touch-action: manipulation; /* Évite le zoom sur double tap mobile */
+            touch-action: manipulation;
         }
 
         .container {
@@ -68,9 +67,6 @@
             position: relative;
         }
 
-        /* ========================================================
-           CONTENEURS D'ÉTAPES
-           ======================================================== */
         .step-container {
             background-color: var(--surface-color);
             padding: 40px 30px;
@@ -160,8 +156,25 @@
         }
 
         /* ========================================================
-           STYLES MINI-JEU (ÉTAPE 2)
+           BARRE DE PROGRESSION GLOBALE (affichée après étape 1)
            ======================================================== */
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent-color);
+            transition: width 1.5s ease-in-out, background-color var(--transition-speed) ease;
+        }
+
         .dashboard-header {
             font-size: 0.8rem;
             letter-spacing: 3px;
@@ -171,6 +184,9 @@
             padding-bottom: 10px;
         }
 
+        /* ========================================================
+           STYLES MINI-JEU (ÉTAPE 2)
+           ======================================================== */
         .score-display {
             font-size: 1.5rem;
             font-weight: 900;
@@ -186,7 +202,7 @@
             border: 2px dashed #444;
             border-radius: 8px;
             overflow: hidden;
-            display: none; /* Masqué jusqu'au clic sur Jouer */
+            display: none;
             margin-bottom: 20px;
         }
 
@@ -199,7 +215,6 @@
             cursor: crosshair;
             display: none;
             box-shadow: 0 0 15px var(--accent-color);
-            /* Animation de pulsation pour inciter au clic */
             animation: pulse 0.5s infinite alternate;
         }
 
@@ -208,25 +223,8 @@
             to { transform: scale(1.1); }
         }
 
-        .progress-bar-container {
-            width: 100%;
-            height: 8px;
-            background: #333;
-            border-radius: 4px;
-            margin: 20px 0;
-            overflow: hidden;
-            display: none;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--accent-color);
-            transition: width 1.5s ease-in-out;
-        }
-
         /* ========================================================
-           STYLES CARTE FINALE (ÉTAPE 4)
+           STYLES CARTE FINALE (ÉTAPE 5)
            ======================================================== */
         .member-card {
             width: 100%;
@@ -264,67 +262,25 @@
             pointer-events: none;
         }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .card-title {
-            font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-
-        .card-chip {
-            width: 40px;
-            height: 30px;
-            background: linear-gradient(135deg, #d4af37, #f3e5ab, #d4af37);
-            border-radius: 5px;
-            opacity: 0.9;
-        }
-
-        .card-body {
-            margin-top: auto;
-        }
-
-        .card-status {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 5px;
-        }
-
-        .card-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .final-message {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .final-subtext {
-            font-size: 1rem;
-            color: #ccc;
-            font-weight: 300;
-            line-height: 1.5;
-        }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .card-title { font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; }
+        .card-chip { width: 40px; height: 30px; background: linear-gradient(135deg, #d4af37, #f3e5ab, #d4af37); border-radius: 5px; opacity: 0.9; }
+        .card-body { margin-top: auto; }
+        .card-status { font-size: 0.8rem; letter-spacing: 2px; color: rgba(255, 255, 255, 0.7); margin-bottom: 5px; }
+        .card-name { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .final-message { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 15px; line-height: 1.4; }
+        .final-subtext { font-size: 1rem; color: #ccc; font-weight: 300; line-height: 1.5; }
 
     </style>
 </head>
 <body>
 
+    <div class="progress-bar-container" id="global-progress" style="position: absolute; top: 0; left: 0; margin: 0; border-radius: 0; z-index: 10;">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
     <div class="container">
         
-        <!-- ÉTAPE 1 -->
         <div id="step1" class="step-container active">
             <h1>Le Mystère Chiffré</h1>
             <p class="riddle">"Je suis une fraction d'un tout. On me possède sans me toucher, on me partage pour être plus fort.<br><br>Divise 100 par le nombre d'enfants d'exception qui t'aiment et trouve le mot lié à cette division."</p>
@@ -335,39 +291,43 @@
             <div class="error-message" id="error1"></div>
         </div>
 
-        <!-- ÉTAPE 2 : LE MINI JEU -->
         <div id="step2" class="step-container">
             <div class="dashboard-header">🟢 SÉCURITÉ BIOMÉTRIQUE</div>
             <h1>Test de Réflexes</h1>
-            <div class="progress-bar-container" id="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
             <p class="riddle" id="game-instructions">"Pour prouver ton identité et accéder à la suite, touche 15 signaux avant qu'ils ne disparaissent."</p>
             
             <div class="score-display" id="score-display">Score : 0 / 15</div>
             
             <div class="game-board" id="game-board">
-                <!-- La cible à cliquer -->
                 <div class="game-target" id="game-target" onmousedown="hitTarget()" ontouchstart="hitTarget(event)"></div>
             </div>
 
             <button id="btn-start-game" onclick="startGame()">Démarrer le test</button>
-            <button id="btn-next-step" onclick="passToStep3()" style="display:none; background-color: #28a745;">Poursuivre l'investigation</button>
+            <button id="btn-next-step" onclick="passToStep3()" style="display:none; background-color: #28a745;">Accéder à la suite</button>
         </div>
 
-        <!-- ÉTAPE 3 -->
         <div id="step3" class="step-container">
-            <h1>Le Révélateur</h1>
-            <p class="riddle">"Dans quel mythique club de Handball du Val-de-Marne, aux couleurs rouge et noir, vas-tu désormais détenir cette fameuse part ?"</p>
+            <div class="dashboard-header">🟢 VÉRIFICATION DU PARTENAIRE</div>
+            <h1>Duo d'Actionnaires</h1>
+            <p class="riddle">"La sécurité biométrique est validée. Mais un bon sociétaire ne se déplace jamais seul...<br><br>Quel est le prénom de ton fidèle partenaire de tribune avec qui tu investis toujours ton temps le week-end ?"</p>
             <div class="input-group">
-                <input type="text" id="input3" placeholder="Nom du club..." autocomplete="off">
-                <button onclick="verifyStep3()">Déverrouiller le contrat</button>
+                <input type="text" id="input3" placeholder="Prénom de ton partenaire..." autocomplete="off">
+                <button onclick="verifyStep3()">Valider l'associé</button>
             </div>
             <div class="error-message" id="error3"></div>
         </div>
 
-        <!-- ÉTAPE FINALE -->
         <div id="step4" class="step-container">
+            <h1>Le Révélateur</h1>
+            <p class="riddle">"Dans quel mythique club de Handball du Val-de-Marne, aux couleurs rouge et noir, vas-tu désormais détenir cette fameuse part ?"</p>
+            <div class="input-group">
+                <input type="text" id="input4" placeholder="Nom du club..." autocomplete="off">
+                <button onclick="verifyStep4()">Déverrouiller le contrat</button>
+            </div>
+            <div class="error-message" id="error4"></div>
+        </div>
+
+        <div id="step5" class="step-container">
             <div class="member-card">
                 <div class="card-bg-logo">USI</div>
                 <div class="card-header">
@@ -380,19 +340,20 @@
                 </div>
             </div>
             <h2 class="final-message">GRÂCE À TES SUPER ENFANTS GÉNIAUX QUE T'ADORES, TU ES MAINTENANT OFFICIELLEMENT SOCIÉTAIRE DE L'US IVRY HANDBALL ! 🔴🖤</h2>
-            <p class="final-subtext">Félicitations Papa ! Tu ne fais plus seulement vibrer les tribunes, tu possèdes une part du club !</p>
+            <p class="final-subtext">Félicitations Papa ! Tu ne fais plus seulement vibrer les tribunes avec Mario, tu possèdes une part du club !</p>
         </div>
 
     </div>
 
     <script>
-        // Utilitaire pour nettoyer la chaîne
+        // Utilitaire : Enlève les accents et met en minuscules
         function cleanString(str) {
             return str.toLowerCase()
                       .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
                       .replace(/[^a-z0-9]/g, ""); 
         }
 
+        // Navigation fluide entre les divs
         function goToStep(current, next) {
             document.getElementById(`step${current}`).classList.remove('active');
             setTimeout(() => {
@@ -400,43 +361,45 @@
             }, 600);
         }
 
+        // Afficher un message d'erreur
         function showError(step, message) {
             const errorDiv = document.getElementById(`error${step}`);
             errorDiv.textContent = message;
             setTimeout(() => errorDiv.textContent = "", 3000);
         }
 
-        // Touche Entrée pour les inputs
-        document.querySelectorAll('input').forEach((input, index) => {
+        // Touche Entrée pour valider les inputs
+        document.querySelectorAll('input').forEach((input) => {
             input.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
-                    if (index === 0) verifyStep1();
-                    if (index === 1) verifyStep3(); // (input2 supprimé, c'est input3 maintenant)
+                    if (this.id === 'input1') verifyStep1();
+                    if (this.id === 'input3') verifyStep3();
+                    if (this.id === 'input4') verifyStep4();
                 }
             });
         });
 
-        /* --- ÉTAPE 1 --- */
+        /* --- ÉTAPE 1 : FRACTION --- */
         function verifyStep1() {
             const val = document.getElementById('input1').value;
             const cleaned = cleanString(val);
             const validAnswers = ['part', 'moitie', 'action', '50', 'cinquante', '50pourcent'];
             
             if (validAnswers.some(ans => cleaned.includes(ans))) {
+                // Change légèrement l'ambiance (Rouge sombre)
                 document.body.classList.add('theme-step1');
+                
+                // Affiche la barre de progression en haut
+                document.getElementById('global-progress').style.display = 'block';
+                setTimeout(() => { document.getElementById('progress-bar').style.width = '25%'; }, 100);
+
                 goToStep(1, 2);
-                setTimeout(() => {
-                    document.getElementById('progress-container').style.display = 'block';
-                    setTimeout(() => {
-                        document.getElementById('progress-bar').style.width = '33%';
-                    }, 100);
-                }, 800);
             } else {
                 showError(1, "La division n'est pas exacte. Cherche encore la bonne fraction.");
             }
         }
 
-        /* --- ÉTAPE 2 : MINI JEU --- */
+        /* --- ÉTAPE 2 : JEU DE RÉFLEXES --- */
         let score = 0;
         const targetScore = 15;
         let targetTimeout;
@@ -447,7 +410,6 @@
             document.getElementById('btn-start-game').style.display = 'none';
             document.getElementById('game-instructions').style.display = 'none';
             document.getElementById('game-board').style.display = 'block';
-            
             spawnTarget();
         }
 
@@ -455,11 +417,8 @@
             const board = document.getElementById('game-board');
             const target = document.getElementById('game-target');
 
-            // Taille de la cible = 50px
             const maxX = board.clientWidth - 50;
             const maxY = board.clientHeight - 50;
-            
-            // Position aléatoire
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
 
@@ -467,19 +426,15 @@
             target.style.top = `${randomY}px`;
             target.style.display = 'block';
 
-            // Disparaît si on est trop lent (800ms)
             clearTimeout(targetTimeout);
             targetTimeout = setTimeout(() => {
                 target.style.display = 'none';
-                // Réapparaît après une courte pause
                 setTimeout(spawnTarget, 300);
             }, 850);
         }
 
         function hitTarget(event) {
-            // Empêche le comportement par défaut (zoom mobile)
             if(event) event.preventDefault();
-
             clearTimeout(targetTimeout);
             document.getElementById('game-target').style.display = 'none';
             
@@ -489,45 +444,61 @@
             if (score >= targetScore) {
                 gameWon();
             } else {
-                // Fait apparaître la prochaine cible très vite
                 setTimeout(spawnTarget, 200);
             }
         }
 
         function gameWon() {
             document.getElementById('game-board').style.display = 'none';
-            
             const scoreDisplay = document.getElementById('score-display');
             scoreDisplay.innerText = "Accès Autorisé !";
-            scoreDisplay.style.color = "#28a745"; // Vert succès
+            scoreDisplay.style.color = "#28a745"; 
             
-            document.getElementById('progress-bar').style.width = '66%';
+            document.getElementById('progress-bar').style.width = '50%';
             document.getElementById('btn-next-step').style.display = 'block';
         }
 
         function passToStep3() {
-            // Changement de thème vers US Ivry (Rouge et Noir)
-            document.body.classList.remove('theme-step1');
-            document.body.classList.add('theme-step2');
-            
             goToStep(2, 3);
         }
 
-        /* --- ÉTAPE 3 --- */
+        /* --- ÉTAPE 3 : QUESTION MARIO --- */
         function verifyStep3() {
             const val = document.getElementById('input3').value;
             const cleaned = cleanString(val);
             
-            if (cleaned.includes('ivry')) {
-                document.getElementById('progress-bar').style.width = '100%';
+            if (cleaned.includes('mario')) {
+                document.getElementById('progress-bar').style.width = '75%';
+                
+                // On active la charte graphique de l'US Ivry (Rouge et Noir vif)
+                document.body.classList.remove('theme-step1');
+                document.body.classList.add('theme-step2');
+                
                 goToStep(3, 4);
-                setTimeout(launchConfetti, 800);
             } else {
-                showError(3, "Ce n'est pas le bon club... Pense rouge et noir !");
+                showError(3, "Associé inconnu au bataillon. Réfléchis bien !");
             }
         }
 
-        /* --- CONFETTIS FINAUX --- */
+        /* --- ÉTAPE 4 : QUESTION US IVRY --- */
+        function verifyStep4() {
+            const val = document.getElementById('input4').value;
+            const cleaned = cleanString(val);
+            
+            if (cleaned.includes('ivry')) {
+                document.getElementById('progress-bar').style.width = '100%';
+                
+                // Cache la barre de progression avant la fin
+                setTimeout(() => { document.getElementById('global-progress').style.display = 'none'; }, 600);
+                
+                goToStep(4, 5);
+                setTimeout(launchConfetti, 800);
+            } else {
+                showError(4, "Ce n'est pas le bon club... Pense rouge et noir !");
+            }
+        }
+
+        /* --- ÉTAPE 5 : CONFETTIS FINAUX --- */
         function launchConfetti() {
             var duration = 5 * 1000;
             var animationEnd = Date.now() + duration;
@@ -543,11 +514,4 @@
                 confetti(Object.assign({}, defaults, { particleCount,
                     origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
                 }));
-                confetti(Object.assign({}, defaults, { particleCount,
-                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-                }));
-            }, 250);
-        }
-    </script>
-</body>
-</html>
+  
