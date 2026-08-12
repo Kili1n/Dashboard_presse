@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Un cadeau mystère...</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -30,7 +30,7 @@
             --bg-color: #161213;
         }
 
-        /* Thème Étape 2 : Rouge et Noir s'installent */
+        /* Thème Étape 2 : Rouge et Noir s'installent (US Ivry) */
         body.theme-step2 {
             --bg-color: #111111; /* Noir Ivry */
             --surface-color: #1c1c1c;
@@ -58,6 +58,7 @@
             align-items: center;
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
             overflow-x: hidden;
+            touch-action: manipulation; /* Évite le zoom sur double tap mobile */
         }
 
         .container {
@@ -72,7 +73,7 @@
            ======================================================== */
         .step-container {
             background-color: var(--surface-color);
-            padding: 40px;
+            padding: 40px 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             text-align: center;
@@ -144,6 +145,7 @@
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.1s ease;
+            width: 100%;
         }
 
         button:hover { background-color: var(--accent-hover); }
@@ -154,13 +156,12 @@
             font-size: 0.9rem;
             min-height: 20px;
             font-weight: 500;
+            margin-top: 10px;
         }
 
         /* ========================================================
-           STYLES SPÉCIFIQUES (DASHBOARD & CARTE)
+           STYLES MINI-JEU (ÉTAPE 2)
            ======================================================== */
-        
-        /* Dashboard Etape 2 */
         .dashboard-header {
             font-size: 0.8rem;
             letter-spacing: 3px;
@@ -168,6 +169,43 @@
             margin-bottom: 20px;
             border-bottom: 1px solid #444;
             padding-bottom: 10px;
+        }
+
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            color: var(--text-main);
+        }
+
+        .game-board {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px dashed #444;
+            border-radius: 8px;
+            overflow: hidden;
+            display: none; /* Masqué jusqu'au clic sur Jouer */
+            margin-bottom: 20px;
+        }
+
+        .game-target {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #ff4d4d 0%, var(--accent-color) 100%);
+            border-radius: 50%;
+            cursor: crosshair;
+            display: none;
+            box-shadow: 0 0 15px var(--accent-color);
+            /* Animation de pulsation pour inciter au clic */
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(0.9); }
+            to { transform: scale(1.1); }
         }
 
         .progress-bar-container {
@@ -187,7 +225,9 @@
             transition: width 1.5s ease-in-out;
         }
 
-        /* Carte Finale Etape 4 */
+        /* ========================================================
+           STYLES CARTE FINALE (ÉTAPE 4)
+           ======================================================== */
         .member-card {
             width: 100%;
             max-width: 400px;
@@ -278,29 +318,9 @@
             line-height: 1.5;
         }
 
-        /* Notification Float */
-        .toast {
-            position: fixed;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #E30613;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 1000;
-        }
-
-        .toast.show { top: 20px; }
-
     </style>
 </head>
 <body>
-
-    <div class="toast" id="toast">Investissement débloqué à 66% !</div>
 
     <div class="container">
         
@@ -315,19 +335,24 @@
             <div class="error-message" id="error1"></div>
         </div>
 
-        <!-- ÉTAPE 2 -->
+        <!-- ÉTAPE 2 : LE MINI JEU -->
         <div id="step2" class="step-container">
-            <div class="dashboard-header">🟢 TERMINAL D'INVESTISSEMENT ACTIF</div>
-            <h1>Validation Profil</h1>
+            <div class="dashboard-header">🟢 SÉCURITÉ BIOMÉTRIQUE</div>
+            <h1>Test de Réflexes</h1>
             <div class="progress-bar-container" id="progress-container">
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
-            <p class="riddle">"Pour valider ton profil d'investisseur, tu dois composer ton duo d'actionnaires.<br><br>Quel est le prénom de ton fidèle partenaire de tribune avec qui tu investis toujours ton temps le week-end ?"</p>
-            <div class="input-group">
-                <input type="text" id="input2" placeholder="Prénom du partenaire..." autocomplete="off">
-                <button onclick="verifyStep2()">Valider l'associé</button>
+            <p class="riddle" id="game-instructions">"Pour prouver ton identité et accéder à la suite, touche 15 signaux avant qu'ils ne disparaissent."</p>
+            
+            <div class="score-display" id="score-display">Score : 0 / 15</div>
+            
+            <div class="game-board" id="game-board">
+                <!-- La cible à cliquer -->
+                <div class="game-target" id="game-target" onmousedown="hitTarget()" ontouchstart="hitTarget(event)"></div>
             </div>
-            <div class="error-message" id="error2"></div>
+
+            <button id="btn-start-game" onclick="startGame()">Démarrer le test</button>
+            <button id="btn-next-step" onclick="passToStep3()" style="display:none; background-color: #28a745;">Poursuivre l'investigation</button>
         </div>
 
         <!-- ÉTAPE 3 -->
@@ -355,20 +380,19 @@
                 </div>
             </div>
             <h2 class="final-message">GRÂCE À TES SUPER ENFANTS GÉNIAUX QUE T'ADORES, TU ES MAINTENANT OFFICIELLEMENT SOCIÉTAIRE DE L'US IVRY HANDBALL ! 🔴🖤</h2>
-            <p class="final-subtext">Félicitations Papa ! Tu ne fais plus seulement vibrer les tribunes avec Mario, tu possèdes une part du club !</p>
+            <p class="final-subtext">Félicitations Papa ! Tu ne fais plus seulement vibrer les tribunes, tu possèdes une part du club !</p>
         </div>
 
     </div>
 
     <script>
-        // Utilitaire pour nettoyer la chaîne de caractères
+        // Utilitaire pour nettoyer la chaîne
         function cleanString(str) {
             return str.toLowerCase()
-                      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Enlève les accents
-                      .replace(/[^a-z0-9]/g, ""); // Garde uniquement lettres et chiffres
+                      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                      .replace(/[^a-z0-9]/g, ""); 
         }
 
-        // Gestion de la navigation entre les étapes
         function goToStep(current, next) {
             document.getElementById(`step${current}`).classList.remove('active');
             setTimeout(() => {
@@ -376,33 +400,29 @@
             }, 600);
         }
 
-        // Affichage des erreurs
         function showError(step, message) {
             const errorDiv = document.getElementById(`error${step}`);
             errorDiv.textContent = message;
             setTimeout(() => errorDiv.textContent = "", 3000);
         }
 
-        // Permet d'utiliser la touche "Entrée" pour valider
+        // Touche Entrée pour les inputs
         document.querySelectorAll('input').forEach((input, index) => {
             input.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     if (index === 0) verifyStep1();
-                    if (index === 1) verifyStep2();
-                    if (index === 2) verifyStep3();
+                    if (index === 1) verifyStep3(); // (input2 supprimé, c'est input3 maintenant)
                 }
             });
         });
 
-        /* --- LOGIQUE ETAPE 1 --- */
+        /* --- ÉTAPE 1 --- */
         function verifyStep1() {
             const val = document.getElementById('input1').value;
             const cleaned = cleanString(val);
             const validAnswers = ['part', 'moitie', 'action', '50', 'cinquante', '50pourcent'];
             
-            const isCorrect = validAnswers.some(ans => cleaned.includes(ans));
-
-            if (isCorrect) {
+            if (validAnswers.some(ans => cleaned.includes(ans))) {
                 document.body.classList.add('theme-step1');
                 goToStep(1, 2);
                 setTimeout(() => {
@@ -416,32 +436,84 @@
             }
         }
 
-        /* --- LOGIQUE ETAPE 2 --- */
-        function verifyStep2() {
-            const val = document.getElementById('input2').value;
-            const cleaned = cleanString(val);
-            
-            if (cleaned.includes('mario')) {
-                // Déclenche le Toast notification
-                const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                
-                // Met à jour la barre de progression
-                document.getElementById('progress-bar').style.width = '66%';
-                
-                // Changement de thème vers US Ivry (Rouge et Noir)
-                document.body.classList.remove('theme-step1');
-                document.body.classList.add('theme-step2');
+        /* --- ÉTAPE 2 : MINI JEU --- */
+        let score = 0;
+        const targetScore = 15;
+        let targetTimeout;
 
-                setTimeout(() => { toast.classList.remove('show'); }, 3000);
-                
-                goToStep(2, 3);
+        function startGame() {
+            score = 0;
+            document.getElementById('score-display').innerText = `Score : ${score} / ${targetScore}`;
+            document.getElementById('btn-start-game').style.display = 'none';
+            document.getElementById('game-instructions').style.display = 'none';
+            document.getElementById('game-board').style.display = 'block';
+            
+            spawnTarget();
+        }
+
+        function spawnTarget() {
+            const board = document.getElementById('game-board');
+            const target = document.getElementById('game-target');
+
+            // Taille de la cible = 50px
+            const maxX = board.clientWidth - 50;
+            const maxY = board.clientHeight - 50;
+            
+            // Position aléatoire
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            target.style.left = `${randomX}px`;
+            target.style.top = `${randomY}px`;
+            target.style.display = 'block';
+
+            // Disparaît si on est trop lent (800ms)
+            clearTimeout(targetTimeout);
+            targetTimeout = setTimeout(() => {
+                target.style.display = 'none';
+                // Réapparaît après une courte pause
+                setTimeout(spawnTarget, 300);
+            }, 850);
+        }
+
+        function hitTarget(event) {
+            // Empêche le comportement par défaut (zoom mobile)
+            if(event) event.preventDefault();
+
+            clearTimeout(targetTimeout);
+            document.getElementById('game-target').style.display = 'none';
+            
+            score++;
+            document.getElementById('score-display').innerText = `Score : ${score} / ${targetScore}`;
+
+            if (score >= targetScore) {
+                gameWon();
             } else {
-                showError(2, "Investisseur non reconnu dans la base de données de la tribune.");
+                // Fait apparaître la prochaine cible très vite
+                setTimeout(spawnTarget, 200);
             }
         }
 
-        /* --- LOGIQUE ETAPE 3 --- */
+        function gameWon() {
+            document.getElementById('game-board').style.display = 'none';
+            
+            const scoreDisplay = document.getElementById('score-display');
+            scoreDisplay.innerText = "Accès Autorisé !";
+            scoreDisplay.style.color = "#28a745"; // Vert succès
+            
+            document.getElementById('progress-bar').style.width = '66%';
+            document.getElementById('btn-next-step').style.display = 'block';
+        }
+
+        function passToStep3() {
+            // Changement de thème vers US Ivry (Rouge et Noir)
+            document.body.classList.remove('theme-step1');
+            document.body.classList.add('theme-step2');
+            
+            goToStep(2, 3);
+        }
+
+        /* --- ÉTAPE 3 --- */
         function verifyStep3() {
             const val = document.getElementById('input3').value;
             const cleaned = cleanString(val);
@@ -449,8 +521,6 @@
             if (cleaned.includes('ivry')) {
                 document.getElementById('progress-bar').style.width = '100%';
                 goToStep(3, 4);
-                
-                // Déclenchement de l'explosion finale (Rouge, Noir, Blanc)
                 setTimeout(launchConfetti, 800);
             } else {
                 showError(3, "Ce n'est pas le bon club... Pense rouge et noir !");
@@ -463,16 +533,11 @@
             var animationEnd = Date.now() + duration;
             var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0, colors: ['#E30613', '#111111', '#FFFFFF'] };
 
-            function randomInRange(min, max) {
-                return Math.random() * (max - min) + min;
-            }
+            function randomInRange(min, max) { return Math.random() * (max - min) + min; }
 
             var interval = setInterval(function() {
                 var timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
+                if (timeLeft <= 0) return clearInterval(interval);
 
                 var particleCount = 50 * (timeLeft / duration);
                 confetti(Object.assign({}, defaults, { particleCount,
