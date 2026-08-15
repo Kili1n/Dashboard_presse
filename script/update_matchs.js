@@ -4,6 +4,7 @@ const fs = require('fs');
 // --- CONFIGURATION ---
 const FOOTBALL_URLS = [
     { name: "AFC COMPIEGNE", url: 'https://epreuves.fff.fr/competition/club/542781-a-f-c-compiegne/equipe/2026_22206_U17_5/saison'},
+    { name: "AFC COMPIEGNE", url: 'https://epreuves.fff.fr/competition/club/542781-a-f-c-compiegne/equipe/2026_22206_SEM_1/saison'},
     { name: "FC VERSAILLES 78", url: 'https://epreuves.fff.fr/competition/club/500650-versailles-78-fc/equipe/2026_656_SEM_2/saison' },
     { name: "FC VERSAILLES 78", url: 'https://epreuves.fff.fr/competition/club/500650-versailles-78-fc-2/equipe/2026_656_SEM_4/saison' },
     { name: "FC VERSAILLES 78", url: 'https://epreuves.fff.fr/competition/club/500650-versailles-78-fc/equipe/2026_656_U19_1/saison' },
@@ -74,8 +75,12 @@ const FOOTBALL_URLS = [
 ];
 
 const BASKET_URLS = [
-    { name: "C'CHARTRES METROPOLE BASKET", url: 'https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028005/equipes/200000005138535' },
-    { name: "POLE FRANCE BASKET", url: 'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005138551' },
+    { name: "C'CHARTRES METROPOLE BASKET", url: 'https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028005/equipes/200000005334729' },
+    { name: "C'CHARTRES METROPOLE BASKET", url: 'https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028004/equipes/200000005334526' },
+    { name: "POLE FRANCE BASKET", url: 'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005334745' },
+    { name: "POLE FRANCE BASKET", url: 'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005334549' },
+    { name: "VAL DE SEINE BASKET", url: 'https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092056/equipes/200000005334545' },
+
     { name: "NANTERRE 92", url: 'https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152746' },
     { name: "NANTERRE 92", url: 'https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092031/equipes/200000005152781' },
     { name: "PARIS BASKETBALL", url: 'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152783' },
@@ -84,7 +89,6 @@ const BASKET_URLS = [
     { name: "PARIS BASKETBALL", url: 'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075077/equipes/200000005152748' },
     { name: "SAINT QUENTIN BASKET BALL", url: 'https://competitions.ffbb.com/ligues/hdf/comites/0002/clubs/hdf0002018/equipes/200000005152752' },
     { name: "LEVALLOIS METROPOLITANS", url: 'https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092051/equipes/200000005294950' },
-    { name: "VAL DE SEINE BASKET", url: 'https://competitions.ffbb.com/ligues/idf/comites/0092/clubs/idf0092056/equipes/200000005294944' },
     { name: "C'CHARTRES BASKET", url: 'https://competitions.ffbb.com/ligues/cvl/comites/0028/clubs/cvl0028004/equipes/200000005294939' },
     { name: "POISSY BASKET ASSOCIATION", url: 'https://competitions.ffbb.com/ligues/idf/comites/0078/clubs/idf0078013/equipes/200000005294948' },
     { name: "POLE FRANCE BASKET", url: 'https://competitions.ffbb.com/ligues/idf/comites/0075/clubs/idf0075083/equipes/200000005294952' },

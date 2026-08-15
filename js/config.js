@@ -92,7 +92,16 @@ const ACCRED_LIST = {
     "STADE DE REIMS" : "accueil@stade-de-reims.com",
     "OLYMPIQUE SAINT QUENTIN" : "https://osqfootball.footeo.com/contact.html",
     "LILLE LOSC" : "https://www.losc.fr/contact",
-    "US PAYS DE CASSEL" : "paysdecassel.us.582585@lfhf.fr" 
+    "US PAYS DE CASSEL" : "paysdecassel.us.582585@lfhf.fr",
+    "FC MONTFERMEIL" : "https://fc-montfermeil.com/pages/contact",
+    "THIONVILLE LUSITANOS" : "https://www.ustl.fr/contact",
+    "US TORCY" : "https://torcyfoot.footeo.com/contact.html",
+    "STELLA SAINT-MAUR" : "https://www.stellahandball.fr/infos-pratiques/",
+    "FC MONTROUGE" : "https://montrougefc92.fr/contact/",
+    "ELITE VAL D'OISE" : "5895068@ffhandball.net",
+    "NEUILLY MARNE" : "508884@lpiff.fr",
+    "BOULOGNE-BILLANCOURT" : "contact@acbbfoot.com",
+    "SAINT CYR" : "https://www.sctah.eu/contactez-nous",
 };
 
 // --- CONFIGURATION DE FOKAL-PRESS ---
@@ -454,10 +463,6 @@ const STADIUM_COORDS = {
     "AMIENS SCF": { lat: 49.8936, lon: 2.2633 },
     "MAINVILLIERS" : { lat: 48.4545, lon: 1.4524 },
     "BOBIGNY" : { lat: 48.8955, lon: 2.2034 },
-
-    // --- CORRECTIONS DES ERREURS LOG (ALIAS & MANQUANTS) ---
-    
-    // Alias (Noms inversés ou variantes trouvés dans tes logs)
     "AFC CREIL": { lat: 49.256, lon: 2.477 },           // Alias pour AFC CREIL 21
     "US VIMY": { lat: 50.375, lon: 2.808 },             // Alias pour VIMY US
     "US PAYS DE CASSEL": { lat: 50.716, lon: 2.538 },   // Alias pour PAYS DE CASSEL US
@@ -475,16 +480,23 @@ const STADIUM_COORDS = {
     "FC MONTROUGE 92": { lat: 48.814, lon: 2.316 },     // Alias pour MONTROUGE FC 92
     "FC MANTOIS 78": { lat: 48.979, lon: 1.706 },       // Alias pour MANTOIS 78 FC
 
-    // Nouveaux ajouts (Clubs totalement manquants dans ta liste initiale)
-    "VAL DE SEINE BASKET": { lat: 48.974, lon: 1.989 }, // Vernouillet/Verneuil
+    "VAL DE SEINE BASKET": { lat: 48.974, lon: 1.989 },
     "POISSY BASKET ASSOCIATION": { lat: 48.923, lon: 2.032 },
     "FC SAINTE GENEVIEVE": { lat: 48.643, lon: 2.338 },
     "AS ST OUEN L'AUMONE": { lat: 49.043, lon: 2.119 },
-    "SARAN LOIRET": { lat: 47.937, lon: 1.876 },        // Handball
+    "SARAN LOIRET": { lat: 47.937, lon: 1.876 },       
     "FCM AUBERVILLIERS": { lat: 48.913, lon: 2.385 },
-    "ROUEN METROPOLE BASKET": { lat: 49.444, lon: 1.076 }, // Kindarena
+    "ROUEN METROPOLE BASKET": { lat: 49.444, lon: 1.076 },
     "ESA LINAS MONTLHERY": { lat: 48.632, lon: 2.261 },
-    "LEVALLOIS METROPOLITANS": { lat: 48.896, lon: 2.278 }
+    "LEVALLOIS METROPOLITANS": { lat: 48.896, lon: 2.278 },
+    "FC MONTFERMEIL": { lat: 48.898, lon: 2.582 },
+    "JEUNES AUBERVILLIERS": { lat: 48.913, lon: 2.385 },
+    "AC BOULOGNE-BILLANCOURT": { lat: 48.835, lon: 2.239 },
+    "ELITE VAL D'OISE": { lat: 48.971, lon: 2.282 },
+    "THIONVILLE LUSITANOS": { lat: 49.357, lon: 6.167 },
+    "EVREUX FC": { lat: 49.027, lon: 1.150 },
+    "SAINT-CYR": { lat: 48.801, lon: 2.062 },
+    "US TORCY": { lat: 48.836, lon: 2.651 }
 };
 
 const WEATHER_ICONS = {
