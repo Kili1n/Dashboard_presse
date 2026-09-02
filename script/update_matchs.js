@@ -55,6 +55,7 @@ const FOOTBALL_URLS = [
     { name: "LE MANS FC", url: 'https://epreuves.fff.fr/competition/club/537103-le-mans-fc/equipe/2026_18056_U18F_2/saison' },
     { name: "LE MANS FC", url: 'https://epreuves.fff.fr/competition/club/537103-le-mans-fc/equipe/2026_18056_SEF_3/saison' },
     { name: "PARIS SAINT-GERMAIN", url: 'https://epreuves.fff.fr/competition/club/500247-paris-saint-germain/equipe/2026_364_SEF_3/saison' },
+    { name: "PARIS SAINT-GERMAIN", url: 'https://epreuves.fff.fr/competition/club/500247-paris-saint-germain-fc/equipe/2026_364_SEM_2/saison' },
     { name: "PARIS SAINT-GERMAIN", url: 'https://epreuves.fff.fr/competition/club/500247-paris-saint-germain/equipe/2026_364_U19_1/saison' },
     { name: "PARIS SAINT-GERMAIN", url: 'https://epreuves.fff.fr/competition/club/500247-paris-saint-germain/equipe/2026_364_U18F_4/saison' },
     { name: "PARIS SAINT-GERMAIN", url: 'https://epreuves.fff.fr/competition/club/500247-paris-saint-germain/equipe/2026_364_U17_5/saison' },
