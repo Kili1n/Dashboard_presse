@@ -492,9 +492,9 @@ async function run() {
 
     // Exécution dans l'ordre demandé
 
+    const footballMatches = await scrapeFootball(page);
     const handballMatches = await scrapeHandball(page);
     const basketMatches = await scrapeBasketball(page);
-    const footballMatches = await scrapeFootball(page);
 
     // Fusion et tri par date
     const allMatches = [...footballMatches, ...handballMatches, ...basketMatches]
